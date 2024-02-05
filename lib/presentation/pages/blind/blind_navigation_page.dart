@@ -1,17 +1,17 @@
 // ignore_for_file: library_private_types_in_public_api
 
 import 'package:flutter/material.dart';
-import 'package:wait_for_me/presentation/pages/buses_page.dart';
-import 'package:wait_for_me/presentation/pages/profile_page.dart';
+import 'package:wait_for_me/presentation/pages/blind/buses_page.dart';
+import 'package:wait_for_me/presentation/pages/blind/profile_page.dart';
 
-class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+class BlindNavigationPage extends StatefulWidget {
+  const BlindNavigationPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
+  State<BlindNavigationPage> createState() => _BlindNavigationPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _BlindNavigationPageState extends State<BlindNavigationPage> {
 
   List<Widget> pages = [
     const BusesPage(), 

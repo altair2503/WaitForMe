@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:wait_for_me/presentation/pages/main_page.dart';
+import 'package:wait_for_me/presentation/pages/blind/blind_navigation_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainPage()
+      home: const BlindNavigationPage()
     );
   }
 }
