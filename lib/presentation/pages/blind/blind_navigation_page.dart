@@ -34,8 +34,9 @@ class _BlindNavigationPageState extends State<BlindNavigationPage> {
         // Routing Options
         onTap: onTap,
         currentIndex: currentIndex,
-        // Items Color Options
-        selectedItemColor: Colors.black,
+        // Color Options
+        selectedItemColor: Colors.white, // Items color
+        backgroundColor: const Color.fromRGBO(0, 97, 139, 1), // Background color
         // Label Options
         showSelectedLabels: false,
         showUnselectedLabels: false,

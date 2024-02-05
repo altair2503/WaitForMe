@@ -10,8 +10,21 @@ class BusesPage extends StatefulWidget {
 class _BusesPageState extends State<BusesPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Buses"),
+    return Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            color: Colors.red
+          ),
+          height: 110,
+          margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+          padding: EdgeInsets.fromLTRB(0, 0, 0, 20),
+          child: const Align(
+            alignment: Alignment.bottomCenter,
+            child: Text("City Name"),
+          ),
+        )
+      ],
     );
   }
 }
