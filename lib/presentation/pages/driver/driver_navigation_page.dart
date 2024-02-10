@@ -29,12 +29,13 @@ class _DriverNavigationPageState extends State<DriverNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: currentIndex == 1 ? Colors.red : Colors.white,
       body: SafeArea(
         child: pages[currentIndex]
       ),
       bottomNavigationBar: 
         Container(
-          padding: const EdgeInsets.fromLTRB(20, 2, 20, 0),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           decoration: const BoxDecoration(
             color: Colors.white,
             boxShadow: [ BoxShadow(color: Color.fromRGBO(0, 0, 0, .1), offset: Offset(0, -0.5)) ]

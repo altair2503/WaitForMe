@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:wait_for_me/presentation/pages/blind/blind_home_page.dart';
 import 'package:wait_for_me/presentation/pages/blind/cities_page.dart';
 import 'package:wait_for_me/presentation/pages/blind/notifying_page.dart';

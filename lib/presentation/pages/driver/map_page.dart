@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -10,8 +11,38 @@ class MapPage extends StatefulWidget {
 class _MapPageState extends State<MapPage> {
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Map Page"),
+    return Column(
+      children: [
+        Container(
+          height: 45,
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.black.withOpacity(.15), width: .4))
+          ),
+          child: TextButton(
+            onPressed: () {  },
+            style: TextButton.styleFrom(
+              iconColor: Colors.black.withOpacity(.8),
+              padding: const EdgeInsets.symmetric(horizontal: 20)
+            ),
+            child: const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Ionicons.bus_outline, size: 20),
+                SizedBox(width: 7),
+                Text(
+                  "201 Bus",
+                  style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500, color: Colors.black),
+                )
+              ]
+            )
+          )
+        ),
+        Expanded(
+          child: Container(
+            color: Colors.red,
+          )
+        )
+      ]
     );
   }
 }
