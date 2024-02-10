@@ -1,0 +1,1 @@
+enum HomePageMenuActions { logout }

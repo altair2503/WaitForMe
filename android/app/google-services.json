@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "374735603796",
+    "project_id": "waitforme-9d678",
+    "storage_bucket": "waitforme-9d678.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:374735603796:android:b0cc9b0f9646f88fc985c1",
+        "android_client_info": {
+          "package_name": "com.example.wait_for_me"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCvjJuWHeiwRkfbmpGKTtxnphgUzxvg-XU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
