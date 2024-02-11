@@ -46,17 +46,15 @@ class FirebaseAuthProvider implements GeneralAuthProvider {
     }
   }
 
-  // AuthUser? _user;
-  // @override
-  // AuthUser? get currentUser {
-  //   // final user = FirebaseAuth.instance.currentUser;
-  //   if (_user != null) {
-  //     print('currentUser');
-  //     return _user;
-  //   } else {
-  //     return null;
-  //   }
-  // }
+  AuthUser? _user;
+
+  @override
+  AuthUser? get currentUser {
+    if (_user == null) {
+      getCurrentUser().then((value) => _user = value);
+    }
+    return _user;
+  }
 
   @override
   Future<AuthUser?> getCurrentUser() async {
@@ -119,12 +117,14 @@ class FirebaseAuthProvider implements GeneralAuthProvider {
         .get();
     if (userDoc.exists && userDoc.data() is Map<String, dynamic>) {
       final userData = userDoc.data() as Map<String, dynamic>;
-      return AuthUser.fromFirebase(
+      final user = AuthUser.fromFirebase(
         firebaseUser,
         name: userData['name'] as String? ?? '',
         surname: userData['surname'] as String? ?? '',
         role: userData['role'] as String? ?? '',
       );
+      _user = user;
+      return user;
     }
     return null;
   }

@@ -71,6 +71,7 @@ flutter:
     - assets/icons/driver.gif.webp
     - assets/images/driver.png
     - assets/images/logo.JPEG
+    - assets/images/driver_profile.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

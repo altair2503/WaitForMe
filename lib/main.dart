@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:wait_for_me/constants/routes.dart';
-import 'package:wait_for_me/presentation/mian_page.dart';
+import 'package:wait_for_me/presentation/main_page.dart';
 import 'package:wait_for_me/presentation/pages/authorization/email_verify_view.dart';
 import 'package:wait_for_me/presentation/pages/authorization/login_page.dart';
 import 'package:wait_for_me/presentation/pages/authorization/registration_driver_page.dart';

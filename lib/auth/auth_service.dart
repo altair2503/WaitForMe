@@ -19,10 +19,10 @@ class AuthService implements GeneralAuthProvider {
     return provider.createUser(name: name, surname: surname, email: email, password: password, role: role);
   }
 
-  // @override
-  // AuthUser? get currentUser {
-  //   return provider.currentUser;
-  // }
+  @override
+  AuthUser? get currentUser {
+    return provider.currentUser;
+  }
 
   @override
   Future<void> emailVerification() async {

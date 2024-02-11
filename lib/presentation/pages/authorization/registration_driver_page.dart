@@ -42,6 +42,7 @@ class _RegisterPWDViewState extends State<RegisterPWDView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: const Text("Registertion for PwDs",
               style: TextStyle(

@@ -4,7 +4,7 @@ abstract class GeneralAuthProvider {
 
   Future<void> initilize();
 
-  // AuthUser? get currentUser;
+  AuthUser? get currentUser;
 
   Future<AuthUser?> getCurrentUser();
 

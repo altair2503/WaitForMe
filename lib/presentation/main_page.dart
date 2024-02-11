@@ -14,7 +14,7 @@ Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: 
-          FutureBuilder(
+      FutureBuilder(
         future: AuthService.firebase().getCurrentUser(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
@@ -31,7 +31,7 @@ Widget build(BuildContext context) {
             return const CircularProgressIndicator();
           }
         },
-          ),
+      ),
           actions: [
             PopupMenuButton<HomePageMenuActions>(
               onSelected: (value) async {

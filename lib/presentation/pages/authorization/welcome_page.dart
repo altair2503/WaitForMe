@@ -13,6 +13,7 @@ class _WelcomePageState extends State<WelcomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
         appBar: AppBar(
           title: Row(children: [
             Image.asset('assets/images/logo.JPEG', scale: 80),
