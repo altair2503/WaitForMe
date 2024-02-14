@@ -21,14 +21,12 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
   AuthUser? _user;
   bool? _isShiftActive;
   Bus? driverBusNumber;
-  Stream<Bus?>? driverBusNumberStream;
 
   @override
   void initState() {
     super.initState();
     _fetchData();
     _busNumber = TextEditingController();
-    driverBusNumberStream = BusService.instance?.readDriverBusNumber();
   }
 
   @override
@@ -61,10 +59,10 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
           padding: const EdgeInsets.only(top: 100),
           color: mainColor,
           child: Center(
-              child: Container(
+            child: Container(
             padding: const EdgeInsets.only(right: 25, left: 25, top: 60),
-            height: adjustedHeight,
             width: MediaQuery.of(context).size.width,
+            height: adjustedHeight,
             decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
@@ -74,6 +72,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
             ),
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                
                 children: [
                   Column(children: [
                     Container(
@@ -160,14 +159,15 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                                         color: Colors.white),
                                                   );
                                                 } else {
-                                                  return const Text('?',
-                                                      style: TextStyle(
-                                                          fontSize: 20,
-                                                          fontFamily:
-                                                              'Montserrat',
-                                                          fontWeight:
-                                                              FontWeight.w500,
-                                                          color: Colors.white));
+                                                  return Container(
+                                                      height: 20,
+                                                      width: 20,
+                                                      child: const CircularProgressIndicator(
+                                                          valueColor:
+                                                              AlwaysStoppedAnimation<
+                                                                      Color>(
+                                                                  Colors
+                                                                      .white)));
                                                 }
                                               }))),
                                 )
@@ -177,8 +177,12 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                   margin: const EdgeInsets.only(top: 20.0),
                                   child: ElevatedButton(
                                     onPressed: () async {
-                                      await changeShiftDialog(context);
-                                      _busNumber.clear();
+                                      final dialog =
+                                          await changeShiftDialog(context);
+                                      if (dialog) {
+                                        _busNumber.clear();
+                                        _fetchData();
+                                      }
                                     },
                                     style: ElevatedButton.styleFrom(
                                         textStyle: const TextStyle(
@@ -300,203 +304,3 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
     ]);
   }
 }
-
-class EnterBusNumber extends StatefulWidget {
-  const EnterBusNumber({super.key});
-
-  @override
-  State<EnterBusNumber> createState() => _EnterBusNumberState();
-}
-
-class _EnterBusNumberState extends State<EnterBusNumber> {
-  late final TextEditingController _busNumber;
-
-  Bus? driverBusNumber;
-
-  @override
-  void initState() {
-    super.initState();
-    _busNumber = TextEditingController();
-  }
-
-  @override
-  void dispose() async {
-    _busNumber.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(children: [
-      TextField(
-        textAlign: TextAlign.center,
-        controller: _busNumber,
-        enableSuggestions: false,
-        autocorrect: false,
-        decoration: const InputDecoration(
-          contentPadding: EdgeInsets.all(10.0),
-          hintText: "Enter bus number",
-          hintStyle: TextStyle(color: grayColor),
-        ),
-      ),
-      Container(
-          width: double.infinity,
-          margin: const EdgeInsets.only(top: 20.0),
-          child: ElevatedButton(
-            onPressed: () async {
-              final busNumber = _busNumber.text;
-              final dialog = await startShiftDialog(context, busNumber);
-              if (dialog) {
-                await BusService.instance?.assignBusNumber(number: busNumber);
-                BusService.instance?.driverIsActive();
-              }
-            },
-            style: ElevatedButton.styleFrom(
-                textStyle: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Montserrat',
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white),
-                backgroundColor: greenColor,
-                foregroundColor: Colors.white),
-            child: const Text("Start shift"),
-          ))
-    ]);
-  }
-}
-
-class ShowBusNumber extends StatefulWidget {
-  const ShowBusNumber({super.key});
-
-  @override
-  State<ShowBusNumber> createState() => _ShowBusNumberState();
-}
-
-class _ShowBusNumberState extends State<ShowBusNumber> {
-  late final TextEditingController _busNumber;
-
-  Bus? driverBusNumber;
-
-  @override
-  void initState() {
-    super.initState();
-    _busNumber = TextEditingController();
-  }
-
-  @override
-  void dispose() async {
-    _busNumber.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Stack(children: [
-          const Image(
-              image: AssetImage('assets/icons/driver.gif.webp'), width: 250),
-          Positioned(
-            top: 0,
-            left: screenWidth / 2,
-            child: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(50.0)),
-                ),
-                child: Container(
-                    padding: const EdgeInsets.all(8),
-                    decoration: BoxDecoration(
-                      color: mainColor,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: StreamBuilder<Bus?>(
-                        stream: BusService.instance?.readDriverBusNumber(),
-                        builder: (context, snapshot) {
-                          if (snapshot.hasError) {
-                            return const Text('No bus found');
-                          } else if (snapshot.hasData) {
-                            final driverBusNumber = snapshot.data!;
-                            return Text(
-                              '${driverBusNumber.number}',
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            );
-                          } else {
-                            return const Text('?',
-                                style: TextStyle(
-                                    fontSize: 20,
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.white));
-                          }
-                        }))),
-          )
-        ]),
-        Container(
-            width: double.infinity,
-            margin: const EdgeInsets.only(top: 20.0),
-            child: ElevatedButton(
-              onPressed: () async {
-                await changeShiftDialog(context);
-                _busNumber.clear();
-              },
-              style: ElevatedButton.styleFrom(
-                  textStyle: const TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                  backgroundColor: mainColor,
-                  foregroundColor: Colors.white),
-              child: const Text("Change bus number"),
-            )),
-        Container(
-            width: double.infinity,
-            margin: const EdgeInsets.only(top: 20.0),
-            child: ElevatedButton(
-              onPressed: () async {
-                final dialog = await endShiftDialog(context);
-                if (dialog) {
-                  await BusService.instance?.removeDriverFromBuses();
-                  _busNumber.clear();
-                }
-              },
-              style: ElevatedButton.styleFrom(
-                  textStyle: const TextStyle(
-                      fontSize: 20,
-                      fontFamily: 'Montserrat',
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
-                  backgroundColor: redColor,
-                  foregroundColor: Colors.white),
-              child: const Text("End shift"),
-            )),
-      ],
-    );
-  }
-}
-
-
-                    // StreamBuilder<Bus?>(
-                    //     stream: driverBusNumberStream,
-                    //     builder: (context, snapshot) {
-                    //       if (snapshot.hasError) {
-                    //         return const Text('No bus found');
-                    //       } else if (snapshot.hasData) {
-                    //         final driverBusNumber = snapshot.data!;
-                    //         return Text(
-                    //           '${driverBusNumber.number}',
-                    //           style: const TextStyle(
-                    //               fontSize: 20,
-                    //               fontFamily: 'Montserrat',
-                    //               fontWeight: FontWeight.w500,
-                    //               color: Colors.white),
-                    //         );
-                    //       } else {
-                    //         return EnterBusNumber();
-                    //       }
-                    //     }),

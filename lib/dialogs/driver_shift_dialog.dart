@@ -65,8 +65,7 @@ Future<bool> changeShiftDialog(BuildContext context) {
                   child: const Text('Discard')),
               TextButton(
                   onPressed: () async {
-                    await BusService.instance?.assignBusNumber(
-                        number: _newBusNumber.text);
+                    await BusService.instance?.changeBusNumber(number: _newBusNumber.text);
                     _newBusNumber.clear();
                     Navigator.of(context).pop(true);
                   },
