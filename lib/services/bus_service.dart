@@ -39,7 +39,7 @@ class BusService {
           .toList();
       for (int i = 0; i < dataList.length; i++) {
         for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+          if (dataList[i]['drivers_id'][j] == user?.id) {
             return true;
           }
         }
@@ -64,14 +64,18 @@ class BusService {
           print(busId);
         });
         await FirebaseFirestore.instance.collection('buses').doc(busId).update({
-          "drivers_id": FieldValue.arrayUnion([
-            {"id": user.id}
-          ])
+          "drivers_id": FieldValue.arrayUnion([user.id])
         });
       }
     } catch (e) {
       print('Error assignBusNumber: ${e.toString()}');
     }
+  }
+
+  Future<void> changeBusNumber({required String number}) async {
+    await removeDriverFromBuses();
+    print("Number buss: $number");
+    await assignBusNumber(number: number);
   }
 
   Future<void> removeDriverFromBuses() async {
@@ -84,12 +88,10 @@ class BusService {
           .toList();
       for (int i = 0; i < dataList.length; i++) {
         for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+          if (dataList[i]['drivers_id'][j] == user?.id) {
             await buses.doc(dataList[i]['id']).update({
               "drivers_id": FieldValue.arrayRemove([
-                {
-                  "id": dataList[i]['drivers_id'][j]['id'],
-                }
+                dataList[i]['drivers_id'][j],
               ])
             });
           }
@@ -116,7 +118,7 @@ class BusService {
           .toList();
       for (int i = 0; i < dataList.length; i++) {
         for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+          if (dataList[i]['drivers_id'][j] == user?.id) {
             driverBusNumber = dataList[i]['number'];
             return Bus(number: driverBusNumber);
           }
