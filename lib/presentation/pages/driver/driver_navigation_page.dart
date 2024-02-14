@@ -29,6 +29,7 @@ class _DriverNavigationPageState extends State<DriverNavigationPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: currentIndex == 1 ? const Color.fromRGBO(250, 250, 250, 1) : Colors.white,
       body: SafeArea(
         child: pages[currentIndex]
       ),

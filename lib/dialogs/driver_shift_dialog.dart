@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wait_for_me/services/bus_service.dart';
 
-Future<bool> startShiftDialog(BuildContext context, int busNumber) {
+Future<bool> startShiftDialog(BuildContext context, String busNumber) {
   return showDialog<bool>(
       context: context,
       builder: (context) {
@@ -66,7 +66,7 @@ Future<bool> changeShiftDialog(BuildContext context) {
               TextButton(
                   onPressed: () async {
                     await BusService.instance?.assignBusNumber(
-                        number: int.parse(_newBusNumber.text));
+                        number: _newBusNumber.text);
                     _newBusNumber.clear();
                     Navigator.of(context).pop(true);
                   },

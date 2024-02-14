@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:wait_for_me/auth/auth_exeptions.dart';
 import 'package:wait_for_me/auth/auth_provider.dart';
-import 'package:wait_for_me/auth/auth_user.dart';
+import 'package:wait_for_me/models/auth_user.dart';
 import 'package:wait_for_me/firebase_options.dart';
 
 class FirebaseAuthProvider implements GeneralAuthProvider {

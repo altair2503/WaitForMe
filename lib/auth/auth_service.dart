@@ -1,5 +1,5 @@
 import 'package:wait_for_me/auth/auth_provider.dart';
-import 'package:wait_for_me/auth/auth_user.dart';
+import 'package:wait_for_me/models/auth_user.dart';
 import 'package:wait_for_me/auth/firebase_auth_provider.dart';
 
 class AuthService implements GeneralAuthProvider {

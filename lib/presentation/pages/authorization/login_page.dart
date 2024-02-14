@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:wait_for_me/auth/auth_exeptions.dart';
 import 'package:wait_for_me/auth/auth_service.dart';
-import 'package:wait_for_me/auth/auth_user.dart';
+import 'package:wait_for_me/models/auth_user.dart';
 import 'package:wait_for_me/constants/colors.dart';
 import 'package:wait_for_me/constants/routes.dart';
 import 'package:wait_for_me/dialogs/show_error_dialog.dart';

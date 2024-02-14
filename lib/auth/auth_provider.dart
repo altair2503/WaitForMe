@@ -1,4 +1,4 @@
-import 'package:wait_for_me/auth/auth_user.dart';
+import 'package:wait_for_me/models/auth_user.dart';
 
 abstract class GeneralAuthProvider {
 
