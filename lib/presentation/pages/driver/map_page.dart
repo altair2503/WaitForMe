@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:wait_for_me/presentation/pages/driver/google_map_page.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});
@@ -37,10 +38,8 @@ class _MapPageState extends State<MapPage> {
             )
           )
         ),
-        Expanded(
-          child: Container(
-            color: Colors.red,
-          )
+         Expanded(
+          child: GoogleMapPage()
         )
       ]
     );
