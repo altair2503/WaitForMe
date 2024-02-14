@@ -127,7 +127,6 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
       updateBusLocation(position);
     });
     subscribeToFirestore();
-    BusService.getBusWaitList();
   }
 
   @override
