@@ -7,7 +7,7 @@ PREPARING FOR IMPORTING
 #### To start importing a project, you need to:
 [Flutter](https://docs.flutter.dev/get-started/install) version 3.19.0 [min] and more.
 
-This is the official documentation of Flutter, follow the instructions in this article to install it.
+This is the official documentation of Flutter, **follow the instructions** in this article to install it.
 
 IMPORTING
 ---------
