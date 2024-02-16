@@ -66,3 +66,13 @@ PROJECT START
 After completing all the steps described in the instructions, connect your `mobile device` or `emulator`, and launch the project by typing the following command in the command prompt:
 
       flutter run
+
+---
+
+PROJECT DEVELOPED BY
+--------------------
+#### Our team members and their positions in the project:
+* [Kapparova Aknur](https://github.com/aknurkappar) — Front-End Developer
+* [Amen Azat](https://github.com/azikkw) — Front-End Developer
+* [Kazieva Dina](https://github.com/KDindin) — Back-End Developer
+* [Kabdrakhmanov Altair](https://github.com/altair2503) — Back-End Developer
