@@ -1,6 +1,12 @@
 # WaitForMe - Google Solution Challange 2024
 
-![WaitForMe](https://github.com/altair2503/WaitForMe/blob/main/readme/Banner.png)
+![Banner](https://github.com/altair2503/WaitForMe/blob/main/readme/Banner.png)
+
+---
+
+PREPARING FOR IMPORTING
+-----------------------
+![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
 PREPARING FOR IMPORTING
 -----------------------
