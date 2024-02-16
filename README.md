@@ -5,7 +5,7 @@
 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
-* [Flutter]([https://nodejs.org/en](https://docs.flutter.dev/get-started/install)) version 3.19.0 and more.
+* [Flutter](https://docs.flutter.dev/get-started/install) version 3.19.0 and more.
 
 IMPORTING
 ---------
