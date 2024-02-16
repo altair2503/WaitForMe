@@ -5,7 +5,8 @@
 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
-[Flutter](https://docs.flutter.dev/get-started/install) version 3.19.0(min) and more.
+[Flutter](https://docs.flutter.dev/get-started/install) version 3.19.0[min] and more.
+This is the official documentation of Flutter, follow the instructions in this article to install it.
 
 IMPORTING
 ---------
@@ -51,6 +52,6 @@ To do this, you need to enter the following command:
       
 PROJECT START
 -------------
-After completing all the steps described in the instructions, connect your mobile device or emulator, and launch the project by typing the following command in the command prompt:
+After completing all the steps described in the instructions, connect your `mobile device` or `emulator`, and launch the project by typing the following command in the command prompt:
 
       flutter run
