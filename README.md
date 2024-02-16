@@ -28,7 +28,7 @@ Step-by-step instructions for importing the `WaitForMe` project.
       .metadata
       README.md                 
       analysis_options.yaml     
-      ↓ [Files with all necessary dependencies]
+      ↓ <files with all necessary dependencies>
       pubspec.lock
       pubspec.yaml
 ㅤ  
