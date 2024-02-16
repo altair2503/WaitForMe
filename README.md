@@ -58,7 +58,9 @@ To do this, you need to enter the following command:
 
       flutter pub get
       
-      
+
+---
+
 PROJECT START
 -------------
 After completing all the steps described in the instructions, connect your `mobile device` or `emulator`, and launch the project by typing the following command in the command prompt:
