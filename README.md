@@ -28,7 +28,7 @@ Step-by-step instructions for importing the `WaitForMe` project.
       .metadata
       README.md                 
       analysis_options.yaml     
-      -- Files with all necessary dependencies
+      ↓ [Files with all necessary dependencies]
       pubspec.lock
       pubspec.yaml
 ㅤ  
@@ -51,6 +51,6 @@ To do this, you need to enter the following command:
       
 PROJECT START
 -------------
-After completing all the steps in the instructions, you can start the project using the following command:
+After completing all the steps described in the instructions, connect your mobile device or emulator, and launch the project by typing the following command in the command prompt:
 
       flutter run
