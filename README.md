@@ -1,3 +1,56 @@
-# WaitForMe - GSC 2024
+# WaitForMe - Google Solution Challange 2024
 
-![WaitForMe](https://github.com/altair2503/WaitForMe/blob/main/Banner.png)
+![WaitForMe](https://github.com/altair2503/WaitForMe/blob/main/readme/Banner.png)
+
+PREPARING FOR IMPORTING
+-----------------------
+#### To start importing a project, you need to:
+* [Flutter]([https://nodejs.org/en](https://docs.flutter.dev/get-started/install)) version 3.19.0 and more.
+
+IMPORTING
+---------
+Step-by-step instructions for importing the `WaitForMe` project.
+
+#### 1. Download ZIP and unpacking
+[Download our ZIP](https://github.com/altair2503/WaitForMe/archive/refs/heads/main.zip) archive and unpack it to the folder you want. You will see the following files and directories:
+
+      android/                  for [android] part
+      assets/                   project resources folder
+      ios/                      for [ios] part       
+      lib/                      project source folder
+      linux/
+      macos/                    for [macOS] part
+      readme/                   resources for README.md
+      test/
+      web/                      for [web]
+      windows/                  for [windowsOS]
+      .gitignore
+      .metadata
+      README.md                 
+      analysis_options.yaml     
+      -- Files with all necessary dependencies
+      pubspec.lock
+      pubspec.yaml
+ㅤ  
+You can also import our project using the `git clone` command. To do this, you need to go to the command prompt and specify the path to the folder where you will import the project.  
+
+Next you will need to enter the following:
+      
+      git clone https://github.com/altair2503/WaitForMe.git
+
+#### 2. The path in the command prompt
+Specify the path to the folder where you unpacked the ZIP archive in the command prompt.
+ ㅤ
+#### 3. Installing libraries and modules
+Since the project does not contain all the necessary dependencies, you will need to install them.
+
+To do this, you need to enter the following command:
+
+      flutter pub get
+      
+      
+PROJECT START
+-------------
+After completing all the steps in the instructions, you can start the project using the following command:
+
+      flutter run
