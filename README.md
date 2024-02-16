@@ -8,6 +8,8 @@ USED TECHNOLOGIES
 -----------------------
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
+---
+
 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
