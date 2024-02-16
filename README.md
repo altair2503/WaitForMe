@@ -4,7 +4,7 @@
 
 ---
 
-PREPARING FOR IMPORTING
+USED TECHNOLOGIES
 -----------------------
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
