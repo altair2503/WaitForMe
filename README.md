@@ -4,6 +4,12 @@
 
 ---
 
+PROJECT DEMO VIDEO
+-----------------------
+![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/Video%20Cover.png)
+
+---
+
 USED TECHNOLOGIES
 -----------------------
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
