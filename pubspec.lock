@@ -201,14 +201,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.3+21"
-  fixnum:
-    dependency: transitive
-    description:
-      name: fixnum
-      sha256: "25517a4deb0c03aa0f32fd12db525856438902d9c16536311e76cdc57b31d7d1"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -235,6 +227,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_tts:
+    dependency: "direct main"
+    description:
+      name: flutter_tts
+      sha256: cbb3fd43b946e62398560235469e6113e4fe26c40eab1b7cb5e7c417503fb3a8
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.8.5"
   flutter_web_plugins:
     dependency: transitive
     description: flutter
@@ -252,10 +252,10 @@ packages:
     dependency: transitive
     description:
       name: geolocator_android
-      sha256: "136f1c97e1903366393bda514c5d9e98843418baea52899aa45edae9af8a5cd6"
+      sha256: "93906636752ea4d4e778afa981fdfe7409f545b3147046300df194330044d349"
       url: "https://pub.dev"
     source: hosted
-    version: "4.5.2"
+    version: "4.3.1"
   geolocator_apple:
     dependency: transitive
     description:
@@ -533,14 +533,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.10.0"
-  sprintf:
-    dependency: transitive
-    description:
-      name: sprintf
-      sha256: "1fc9ffe69d4df602376b52949af107d8f5703b77cda567c4d7d86a0693120f23"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0"
   stack_trace:
     dependency: transitive
     description:
@@ -601,10 +593,10 @@ packages:
     dependency: transitive
     description:
       name: uuid
-      sha256: cd210a09f7c18cbe5a02511718e0334de6559871052c90a90c0cca46a4aa81c8
+      sha256: "648e103079f7c64a36dc7d39369cabb358d377078a051d6ae2ad3aa539519313"
       url: "https://pub.dev"
     source: hosted
-    version: "4.3.3"
+    version: "3.0.7"
   vector_math:
     dependency: transitive
     description:

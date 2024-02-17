@@ -1,3 +1,4 @@
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:location/location.dart';
 import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -9,7 +10,6 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
-
 
 class GoogleMapPage extends StatefulWidget {
   const GoogleMapPage({super.key});
@@ -28,6 +28,19 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
   double remainingDistance = 0.0;
   var destinations = [];
   var usersInfo = [];
+  final FlutterTts flutterTts = FlutterTts();
+  var speachState = {500: false, 100: false, 0: false};
+
+  Future<void> speak(text) async {
+    try {
+      await flutterTts.setLanguage("en-US"); // Set desired language
+      await flutterTts.setVolume(0.5);
+      await flutterTts.setSpeechRate(0.7);
+      await flutterTts.speak(text);
+    } catch (e) {
+      print(e);
+    }
+  }
 
   void changeMapMode(GoogleMapController mapController) {
     getJsonFile("assets/map_style.json")
@@ -77,15 +90,32 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     print("Hello then distance");
     List<double> usersDistanceList = [];
     for (var user in usersInfo) {
-      var distance = calculateDistance(busPos,
-          LatLng(user['latitude'], user['longitude']));
+      var distance = calculateDistance(
+          busPos, LatLng(user['latitude'], user['longitude']));
       print("distance $distance");
       usersDistanceList.add(distance);
     }
     setState(() {
-      remainingDistance = usersDistanceList.reduce((curr, next) => curr < next? curr: next);
+      remainingDistance =
+          usersDistanceList.reduce((curr, next) => curr < next ? curr : next);
     });
-    print(usersDistanceList);
+
+    // if (speachState[500] == false && remainingDistance > 100 && remainingDistance < 500) {
+    //   speak(
+    //       "A person with disabilities is waiting for you less than 500 meters away");
+    //   speachState[500] = true;
+    //   speachState[100] = false;
+    // } else if (speachState[100] == false && remainingDistance > 10 && remainingDistance < 100) {
+    //   speak(
+    //       "A person with disabilities is waiting for you less than 100 meters away");
+    //   speachState[100] = true;
+    //   speachState[10] = false;
+    // } else if (speachState[10] == false && remainingDistance < 10 && speachState[10] == false) {
+    //   speak(
+    //       "A person with disabilities is waiting for you less than 10 meters away");
+    //   speachState[10] = true;
+    //   speachState[500] = false;
+    // }
   }
 
   double calculateDistance(busPos, userPos) {
@@ -236,7 +266,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                         color: Colors.black.withOpacity(.15), width: .4)),
               ),
               child: Text(
-                "Remaining Distance: ${remainingDistance > 1000 ? (remainingDistance/1000).toStringAsFixed(1) + 'km' : remainingDistance.toStringAsFixed(0) + 'm'}",
+                "Remaining Distance: ${remainingDistance > 1000 ? (remainingDistance / 1000).toStringAsFixed(1) + 'km' : remainingDistance.toStringAsFixed(0) + 'm'}",
                 style: const TextStyle(fontSize: 16),
               ),
             ),

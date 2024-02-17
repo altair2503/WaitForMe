@@ -703,6 +703,8 @@ PODS:
     - nanopb (< 2.30910.0, >= 2.30908.0)
   - FirebaseSharedSwift (10.21.0)
   - Flutter (1.0.0)
+  - flutter_tts (0.0.1):
+    - Flutter
   - geolocator_apple (1.2.0):
     - Flutter
   - google_maps_flutter_ios (0.0.1):
@@ -807,6 +809,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_database (from `.symlinks/plugins/firebase_database/ios`)
   - Flutter (from `Flutter`)
+  - flutter_tts (from `.symlinks/plugins/flutter_tts/ios`)
   - geolocator_apple (from `.symlinks/plugins/geolocator_apple/ios`)
   - google_maps_flutter_ios (from `.symlinks/plugins/google_maps_flutter_ios/ios`)
   - location (from `.symlinks/plugins/location/ios`)
@@ -846,6 +849,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_database/ios"
   Flutter:
     :path: Flutter
+  flutter_tts:
+    :path: ".symlinks/plugins/flutter_tts/ios"
   geolocator_apple:
     :path: ".symlinks/plugins/geolocator_apple/ios"
   google_maps_flutter_ios:
@@ -871,6 +876,7 @@ SPEC CHECKSUMS:
   FirebaseFirestoreInternal: 7ac1e0c5b4e75aeb898dfe4b1d6d77abbac9eca3
   FirebaseSharedSwift: 19b3f709993d6fa1d84941d41c01e3c4c11eab93
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
+  flutter_tts: 0f492aab6accf87059b72354fcb4ba934304771d
   geolocator_apple: 9157311f654584b9bb72686c55fc02a97b73f461
   google_maps_flutter_ios: f135b968a67c05679e0a53538e900b5c174b0d99
   GoogleMaps: 20d7b12be49a14287f797e88e0e31bc4156aaeb4

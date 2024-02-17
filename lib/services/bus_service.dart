@@ -131,7 +131,7 @@ class BusService {
   }
 
   static Stream<List<Bus>> getBuses() {
-    return FirebaseFirestore.instance.collection("buses").snapshots().map(
+    return FirebaseFirestore.instance.collection("buses").orderBy("number_int").snapshots().map(
         (snapshot) =>
             snapshot.docs.map((doc) => Bus.fromJson(doc.data())).toList());
   }
