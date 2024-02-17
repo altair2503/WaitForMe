@@ -71,7 +71,7 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "../../../../../Downloads/gpxgenerator_path-2.gpx"
+         identifier = "../../../../../Downloads/gpxgenerator_path-3.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

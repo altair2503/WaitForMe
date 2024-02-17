@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../../../../Downloads/gpxgenerator_path-3.gpx">
+   </FileRef>
+   <FileRef
       location = "group:../../../../Downloads/gpxgenerator_path-2.gpx">
    </FileRef>
    <FileRef

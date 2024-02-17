@@ -29,13 +29,12 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
   var destinations = [];
   var usersInfo = [];
   final FlutterTts flutterTts = FlutterTts();
-  var speachState = {500: false, 100: false, 0: false};
+  var speachState = false;
 
   Future<void> speak(text) async {
     try {
       await flutterTts.setLanguage("en-US"); // Set desired language
-      await flutterTts.setVolume(0.5);
-      await flutterTts.setSpeechRate(0.7);
+      await flutterTts.setSpeechRate(0.4);
       await flutterTts.speak(text);
     } catch (e) {
       print(e);
@@ -87,7 +86,6 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
   }
 
   void usersDistance(busPos) {
-    print("Hello then distance");
     List<double> usersDistanceList = [];
     for (var user in usersInfo) {
       var distance = calculateDistance(
@@ -100,22 +98,17 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
           usersDistanceList.reduce((curr, next) => curr < next ? curr : next);
     });
 
-    // if (speachState[500] == false && remainingDistance > 100 && remainingDistance < 500) {
-    //   speak(
-    //       "A person with disabilities is waiting for you less than 500 meters away");
-    //   speachState[500] = true;
-    //   speachState[100] = false;
-    // } else if (speachState[100] == false && remainingDistance > 10 && remainingDistance < 100) {
-    //   speak(
-    //       "A person with disabilities is waiting for you less than 100 meters away");
-    //   speachState[100] = true;
-    //   speachState[10] = false;
-    // } else if (speachState[10] == false && remainingDistance < 10 && speachState[10] == false) {
-    //   speak(
-    //       "A person with disabilities is waiting for you less than 10 meters away");
-    //   speachState[10] = true;
-    //   speachState[500] = false;
-    // }
+    print(speachState);
+
+    if (speachState == false &&
+        remainingDistance > 30 &&
+        remainingDistance <= 300) {
+      speak(
+          "A person with disabilities is waiting for you ${remainingDistance.toInt() - remainingDistance.toInt() % 10} meters away");
+      speachState = true;
+    } else if (remainingDistance <= 30) {
+      speachState = false;
+    }
   }
 
   double calculateDistance(busPos, userPos) {
@@ -167,6 +160,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     setState(() {
       markerList = newMarkerList;
     });
+
+    speachState = false;
   }
 
   Future<void> subscribeToFirestore() async {

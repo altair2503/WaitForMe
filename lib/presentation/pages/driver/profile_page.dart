@@ -76,15 +76,15 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                 children: [
                   Column(children: [
                     Container(
-                        margin: const EdgeInsets.only(bottom: 10),
+                        margin: const EdgeInsets.only(bottom: 30),
                         child: _user != null
                             ? Text(
                                 '${_user?.name} ${_user?.surname}',
                                 style: const TextStyle(
-                                    fontSize: 17,
-                                    fontFamily: 'Montserrat',
-                                    fontWeight: FontWeight.w500,
-                                    color: mainColor),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.black
+                                  ),
                               )
                             : FutureBuilder(
                                 future: AuthService.firebase().getCurrentUser(),
@@ -100,10 +100,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                       return Text(
                                         '${_user?.name} ${_user?.surname}',
                                         style: const TextStyle(
-                                            fontSize: 17,
-                                            fontFamily: 'Montserrat',
-                                            fontWeight: FontWeight.w500,
-                                            color: mainColor),
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w600,
+                                            color: Colors.black),
                                       );
                                     } else {
                                       return const Text('No user found');
@@ -120,19 +119,19 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                 const Image(
                                     image: AssetImage(
                                         'assets/icons/driver.gif.webp'),
-                                    width: 250),
+                                    width: 270),
                                 Positioned(
                                   top: 0,
-                                  left: screenWidth / 2,
+                                  left: screenWidth / 2 + 10,
                                   child: Container(
                                       decoration: const BoxDecoration(
                                         borderRadius: BorderRadius.all(
                                             Radius.circular(50.0)),
                                       ),
                                       child: Container(
-                                          padding: const EdgeInsets.all(8),
+                                          padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                                           decoration: BoxDecoration(
-                                            color: mainColor,
+                                            color: Color.fromARGB(255, 233, 233, 233),
                                             borderRadius:
                                                 BorderRadius.circular(10),
                                           ),
@@ -151,12 +150,10 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                                   return Text(
                                                     '${driverBusNumber.number}',
                                                     style: const TextStyle(
-                                                        fontSize: 20,
-                                                        fontFamily:
-                                                            'Montserrat',
-                                                        fontWeight:
-                                                            FontWeight.w500,
-                                                        color: Colors.white),
+                                                        fontSize: 18,
+                                                        fontWeight: FontWeight.w400,
+                                                        color: Colors.black
+                                                        ),
                                                   );
                                                 } else {
                                                   return Container(
@@ -174,7 +171,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                               ]),
                               Container(
                                   width: double.infinity,
-                                  margin: const EdgeInsets.only(top: 20.0),
+                                  margin: const EdgeInsets.only(top: 35.0),
                                   child: ElevatedButton(
                                     onPressed: () async {
                                       final dialog =
@@ -185,9 +182,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                       }
                                     },
                                     style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(vertical: 16),
                                         textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: 'Montserrat',
+                                            fontSize: 18,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.white),
                                         backgroundColor: mainColor,
@@ -196,7 +193,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                   )),
                               Container(
                                   width: double.infinity,
-                                  margin: const EdgeInsets.only(top: 20.0),
+                                  margin: const EdgeInsets.only(top: 10.0),
                                   child: ElevatedButton(
                                     onPressed: () async {
                                       final dialog =
@@ -210,12 +207,12 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                       }
                                     },
                                     style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(vertical: 16),
                                         textStyle: const TextStyle(
-                                            fontSize: 20,
-                                            fontFamily: 'Montserrat',
+                                            fontSize: 18,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.white),
-                                        backgroundColor: redColor,
+                                        backgroundColor: Color.fromARGB(255, 226, 81, 71),
                                         foregroundColor: Colors.white),
                                     child: const Text("End shift"),
                                   )),
@@ -249,9 +246,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                                     }
                                   },
                                   style: ElevatedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(vertical: 16),
                                       textStyle: const TextStyle(
-                                          fontSize: 20,
-                                          fontFamily: 'Montserrat',
+                                          fontSize: 18,
                                           fontWeight: FontWeight.w500,
                                           color: Colors.white),
                                       backgroundColor: greenColor,
@@ -274,9 +271,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                         },
                         child: const Text("Logout"),
                         style: ElevatedButton.styleFrom(
+                          padding: const EdgeInsets.symmetric(vertical: 16),
                           textStyle: const TextStyle(
-                              fontSize: 20,
-                              fontFamily: 'Montserrat',
+                              fontSize: 18,
                               fontWeight: FontWeight.w500,
                               color: mainColor),
                           backgroundColor: lightGrayColor,
