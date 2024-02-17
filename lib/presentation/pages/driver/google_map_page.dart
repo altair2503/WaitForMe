@@ -1,9 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:wait_for_me/auth/auth_service.dart';
-import 'package:wait_for_me/services/bus_service.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:geolocator/geolocator.dart';
+
+import 'dart:ui' as ui;
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
+
 
 class GoogleMapPage extends StatefulWidget {
   const GoogleMapPage({super.key});
@@ -13,66 +19,49 @@ class GoogleMapPage extends StatefulWidget {
 }
 
 class _GoogleMapPageState extends State<GoogleMapPage> {
-  List<Marker> markerList = [];
-  LatLng bus = LatLng(43.2560, 76.9614);
-  var destinations = [];
+  Location location = Location();
   GoogleMapController? mapController;
+  LatLng bus = const LatLng(43.254916, 76.943788);
   BitmapDescriptor markerIcon =
       BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet);
+  List<Marker> markerList = [];
   double remainingDistance = 0.0;
+  var destinations = [];
+  var usersInfo = [];
 
-  void addCustomMarkers() {
-    ImageConfiguration configuration =
-        ImageConfiguration(size: Size(0, 0), devicePixelRatio: 5);
-
-    BitmapDescriptor.fromAssetImage(
-            configuration, "assets/icons/buslocation.png")
-        .then((value) => {
-              setState(() {
-                markerIcon = value;
-              })
-            });
+  void changeMapMode(GoogleMapController mapController) {
+    getJsonFile("assets/map_style.json")
+        .then((value) => setMapStyle(value, mapController));
   }
 
-  // void updateCurrentLocation(Position position) {
-  //   setState(() {
-  //     destination = LatLng(position.latitude, position.longitude);
-  //   });
-  // }
-
-  void updateBusLocation(Position position) {
-    setState(() {
-      bus = LatLng(position.latitude, position.longitude);
-    });
-
-    mapController?.animateCamera(CameraUpdate.newLatLng(bus));
-
-    calculateRemainingDistance();
+  void setMapStyle(String mapStyle, GoogleMapController mapController) {
+    mapController.setMapStyle(mapStyle);
   }
 
-  void calculateRemainingDistance() {
-    double distance = Geolocator.distanceBetween(
-        bus.latitude, bus.latitude, bus.longitude, bus.longitude);
-
-    double distanceInKm = distance / 1000;
-
-    setState(() {
-      remainingDistance = distanceInKm;
-    });
-
-    print("Remaining Distance: ${distanceInKm} kilometers");
+  Future<String> getJsonFile(String path) async {
+    ByteData byte = await rootBundle.load(path);
+    var list = byte.buffer.asUint8List(byte.offsetInBytes, byte.lengthInBytes);
+    return utf8.decode(list);
   }
 
-  void updateMarkersFromFirestore(
-      QuerySnapshot<Map<String, dynamic>> snapshot) {
-    // Handle Firestore data and update markers
-    List<Marker> newMarkerList = [];
+  Future<Uint8List> getBytesFromAsset(String path, int width) async {
+    ByteData data = await rootBundle.load(path);
+    ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
+        targetWidth: width);
+    ui.FrameInfo fi = await codec.getNextFrame();
+    return (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
+        .buffer
+        .asUint8List();
+  }
 
-    newMarkerList.add(
+  Future<void> updateBusLocation(LatLng busPos) async {
+    final Uint8List busMarkerIcon =
+        await getBytesFromAsset('assets/icons/busmark.png', 180);
+    markerList.add(
       Marker(
         markerId: const MarkerId('bus'),
-        position: bus,
-        icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+        position: busPos,
+        icon: BitmapDescriptor.fromBytes(busMarkerIcon),
         infoWindow: InfoWindow(
           title: 'driver',
           snippet: 'Lat: ${bus.latitude}, Lng: ${bus.longitude}',
@@ -80,22 +69,71 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
       ),
     );
 
+    mapController?.animateCamera(CameraUpdate.newLatLng(busPos));
+    usersDistance(busPos);
+  }
+
+  void usersDistance(busPos) {
+    print("Hello then distance");
+    List<double> usersDistanceList = [];
+    for (var user in usersInfo) {
+      var distance = calculateDistance(busPos,
+          LatLng(user['latitude'], user['longitude']));
+      print("distance $distance");
+      usersDistanceList.add(distance);
+    }
+    setState(() {
+      remainingDistance = usersDistanceList.reduce((curr, next) => curr < next? curr: next);
+    });
+    print(usersDistanceList);
+  }
+
+  double calculateDistance(busPos, userPos) {
+    double distance = Geolocator.distanceBetween(
+        busPos.latitude, busPos.longitude, userPos.latitude, userPos.longitude);
+    return distance;
+  }
+
+  Future<void> updateMarkersFromFirestore(
+      QuerySnapshot<Map<String, dynamic>> snapshot) async {
     var userData = snapshot.docs[0].data()['users_info'];
-    for (var _user in userData) {
+    List<Marker> newMarkerList = [];
+
+    setState(() {
+      usersInfo = userData;
+    });
+
+    final Uint8List busMarkerIcon =
+        await getBytesFromAsset('assets/icons/busmark.png', 180);
+    final Uint8List pwdMarkerIcon =
+        await getBytesFromAsset('assets/icons/pwdmark.png', 150);
+
+    newMarkerList.add(
+      Marker(
+        markerId: const MarkerId('bus'),
+        position: bus,
+        icon: BitmapDescriptor.fromBytes(busMarkerIcon),
+        infoWindow: InfoWindow(
+          title: 'driver',
+          snippet: 'Lat: ${bus.latitude}, Lng: ${bus.longitude}',
+        ),
+      ),
+    );
+
+    for (var user in userData) {
       newMarkerList.add(
         Marker(
-          markerId: MarkerId(_user['id']),
-          position: LatLng(_user['latitude'], _user['longitude']),
-          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+          markerId: MarkerId(user['id']),
+          position: LatLng(user['latitude'], user['longitude']),
+          icon: BitmapDescriptor.fromBytes(pwdMarkerIcon),
           infoWindow: InfoWindow(
             title: 'user',
-            snippet: 'Lat: ${_user["latitude"]}, Lng: ${_user["longitude"]}',
+            snippet: 'Lat: ${user["latitude"]}, Lng: ${user["longitude"]}',
           ),
         ),
       );
     }
 
-    print(newMarkerList);
     setState(() {
       markerList = newMarkerList;
     });
@@ -103,7 +141,6 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 
   Future<void> subscribeToFirestore() async {
     final user = await AuthService.firebase().getCurrentUser();
-    print(user?.id);
     if (user != null) {
       FirebaseFirestore.instance
           .collection('buses')
@@ -116,16 +153,53 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     }
   }
 
+  void trackBusLocatoin() {
+    location.onLocationChanged.listen((LocationData currentLocation) {
+      print(
+          "Location changed: ${currentLocation.latitude}, ${currentLocation.longitude}");
+
+      LatLng newLocation =
+          LatLng(currentLocation.latitude ?? 0, currentLocation.longitude ?? 0);
+
+      setState(() {
+        bus = newLocation;
+      });
+
+      updateBusLocation(newLocation);
+    });
+  }
+
+  Future<void> _getLocation() async {
+    try {
+      bool serviceEnabled = await location.serviceEnabled();
+      if (!serviceEnabled) {
+        serviceEnabled = await location.requestService();
+        if (!serviceEnabled) {
+          return;
+        }
+      }
+
+      PermissionStatus permissionGranted = await location.hasPermission();
+      if (permissionGranted == PermissionStatus.denied) {
+        permissionGranted = await location.requestPermission();
+        if (permissionGranted != PermissionStatus.granted) {
+          return;
+        }
+      }
+
+      LocationData locationData = await location.getLocation();
+      print(
+          "Current location: ${locationData.latitude}, ${locationData.longitude}");
+    } catch (e) {
+      print("Error getting location: $e");
+    }
+  }
+
   @override
   void initState() {
     super.initState();
-    addCustomMarkers();
-    Geolocator.getPositionStream(
-      locationSettings:
-          LocationSettings(accuracy: LocationAccuracy.best, distanceFilter: 10),
-    ).listen((Position position) {
-      updateBusLocation(position);
-    });
+    _getLocation();
+    trackBusLocatoin();
     subscribeToFirestore();
   }
 
@@ -135,50 +209,35 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
       body: Stack(
         children: [
           GoogleMap(
-            mapType: MapType.normal,
-            onMapCreated: (controller) {
-              mapController = controller;
-            },
-            initialCameraPosition: CameraPosition(
-              target: bus,
-              zoom: 15.0,
-            ),
-            markers: Set<Marker>.from(markerList),
-            // {
-            // Marker(
-            // markerId: const MarkerId('destination'),
-            // position: destination,
-            // icon: BitmapDescriptor.defaultMarkerWithHue(
-            //     BitmapDescriptor.hueBlue),
-            // infoWindow: InfoWindow(
-            //     title: 'Destination',
-            //     snippet:
-            //         'Lat: ${destination.latitude}, Lng: ${destination.longitude}')),
-            //   Marker(
-            //       markerId: const MarkerId('bus'),
-            //       position: bus,
-            //       icon: BitmapDescriptor.defaultMarkerWithHue(
-            //           BitmapDescriptor.hueBlue),
-            //       infoWindow: InfoWindow(
-            //           title: 'Bus',
-            //           snippet: 'Lat: ${bus.latitude}, Lng: ${bus.longitude}')),
-            // },
-          ),
+              mapType: MapType.normal,
+              onMapCreated: (controller) {
+                mapController = controller;
+                changeMapMode(controller);
+              },
+              initialCameraPosition: CameraPosition(
+                target: bus,
+                zoom: 15.0,
+              ),
+              myLocationEnabled: false,
+              padding: const EdgeInsets.symmetric(vertical: 35),
+              markers: Set<Marker>.from(markerList)),
           Positioned(
-            top: 16,
+            bottom: 0,
             left: 0,
             right: 0,
-            child: Center(
-              child: Container(
-                padding: EdgeInsets.all(0.8),
-                decoration: BoxDecoration(
-                  color: Colors.yellow,
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: Text(
-                  "Remaining Distance: ${remainingDistance.toStringAsFixed(2)} kilometers",
-                  style: TextStyle(fontSize: 16),
-                ),
+            child: Container(
+              width: double.infinity,
+              padding: const EdgeInsets.symmetric(vertical: 7),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 250, 250, 250),
+                border: Border(
+                    top: BorderSide(
+                        color: Colors.black.withOpacity(.15), width: .4)),
+              ),
+              child: Text(
+                "Remaining Distance: ${remainingDistance > 1000 ? (remainingDistance/1000).toStringAsFixed(1) + 'km' : remainingDistance.toStringAsFixed(0) + 'm'}",
+                style: const TextStyle(fontSize: 16),
               ),
             ),
           )
