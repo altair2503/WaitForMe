@@ -86,7 +86,6 @@ PROJECT DEVELOPED BY
 * [Kabdrakhmanov Altair](https://github.com/altair2503) — Back-End Developer
 
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
-| ------------- | ------------- | ------------- | ------------- |
+| :-----------: | :-----------: | :-----------: | :-----------: |
 | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  |
-| ------------- | ------------- | ------------- | ------------- |
 | Front-End Developer  | Front-End Developer  | Back-End Developer  | Back-End Developer  |
