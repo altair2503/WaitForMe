@@ -85,7 +85,7 @@ PROJECT DEVELOPED BY
 * [Kazieva Dina](https://github.com/KDindin) — Back-End Developer
 * [Kabdrakhmanov Altair](https://github.com/altair2503) — Back-End Developer
 
-|   |   |   |   |
-|:-:|:-:|:-:|:-:|
-|   |   |   |   |
-|   |   |   |   |
+| [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw) |
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
