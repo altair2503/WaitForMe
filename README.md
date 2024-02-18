@@ -13,8 +13,8 @@ PROJECT DEMO VIDEO
 USED TECHNOLOGIES
 -----------------------
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
-
-* Flutter⠀⠀—⠀⠀Firebase⠀⠀—⠀⠀Google Cloud⠀⠀—⠀⠀Dart⠀⠀—⠀⠀Google Maps
+#### To create our project, we used technologies such as
+* Flutter⠀—⠀Firebase⠀—⠀Google Cloud⠀—⠀Dart⠀—⠀Google Maps
 
 ---
 
