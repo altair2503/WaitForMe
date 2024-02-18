@@ -84,3 +84,8 @@ PROJECT DEVELOPED BY
 * [Amen Azat](https://github.com/azikkw) — Front-End Developer
 * [Kazieva Dina](https://github.com/KDindin) — Back-End Developer
 * [Kabdrakhmanov Altair](https://github.com/altair2503) — Back-End Developer
+
+|   |   |   |   |
+|:-:|:-:|:-:|:-:|
+|   |   |   |   |
+|   |   |   |   |
