@@ -28,7 +28,7 @@ FEATURES
 ## 2. Drvier Part
 | Main Screen  | Overview  | Explanation  |
 | :-----------: | :-----------: | :-----------: |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMain.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. [ User Guide ] 1. Listen example speech for the word. 2. Look at the example sentences to see how this word would be used. 3. Record your voice. 4. Press the next button to practice as many times as you want. 5. Click stop button and check out the learning report.  |
+| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DrvierMain.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. [ User Guide ] 1. Listen example speech for the word. 2. Look at the example sentences to see how this word would be used. 3. Record your voice. 4. Press the next button to practice as many times as you want. 5. Click stop button and check out the learning report.  |
 
 ---
 
