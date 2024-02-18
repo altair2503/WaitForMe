@@ -12,9 +12,9 @@ PROJECT DEMO VIDEO
 
 USED TECHNOLOGIES
 -----------------
-![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 #### To create our project, we used technologies such as
 * Flutter⠀—⠀Firebase⠀—⠀Google Cloud⠀—⠀Dart⠀—⠀Google Maps
+![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
 ---
 
@@ -97,5 +97,5 @@ PROJECT DEVELOPED BY
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
 | :-----------: | :-----------: | :-----------: | :-----------: |
 | Front-End Developer  | Front-End Developer  | Back-End Developer  | Back-End Developer  |
-| ![Aknur Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AknurPhoto.jpg)  | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  |
-| [Aknur Linkedin](https://www.linkedin.com/in/aknurkapparova/)  | [Azat Linkedin](https://www.linkedin.com/in/azikkw/)  | [Dina Linkedin](https://github.com/aknurkappar)  | [Altair Linkedin](https://www.linkedin.com/in/kabdrakhmanov/)  |
+| ![Aknur Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AknurPhoto.jpg)  | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/Dina.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  |
+| [Aknur Linkedin](https://www.linkedin.com/in/aknurkapparova/)  | [Azat Linkedin](https://www.linkedin.com/in/azikkw/)  | [Dina Linkedin](https://www.linkedin.com/in/dina-kaziyeva-3565622b5/)  | [Altair Linkedin](https://www.linkedin.com/in/kabdrakhmanov/)  |
