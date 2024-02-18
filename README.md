@@ -14,7 +14,7 @@ USED TECHNOLOGIES
 -----------------------
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
-•⠀⠀Flutter⠀⠀•⠀⠀Firebase⠀⠀•⠀⠀Google Cloud⠀⠀•⠀⠀Dart⠀⠀•⠀⠀Google Maps
+* Flutter⠀⠀—⠀⠀Firebase⠀⠀—⠀⠀Google Cloud⠀⠀—⠀⠀Dart⠀⠀—⠀⠀Google Maps
 
 ---
 
