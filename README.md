@@ -22,12 +22,12 @@ FEATURES
 -----------------------
 ## 1. PWD Part
 | Main Screen  | Overview  | Explanation  |
-| :-----------: | :-----------: | :-----------: |
+| :-----------: | :-----------: | ------------- |
 | ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMain.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. <br/> <br/> [ User Guide ] <br/> 1. Listen example speech for the word. <br/> 2. Look at the example sentences to see how this word would be used. <br/> 3. Record your voice. <br/> 4. Press the next button to practice as many times as you want. <br/> 5. Click stop button and check out the learning report.  |
 
 ## 2. Drvier Part
 | Main Screen  | Overview  | Explanation  |
-| :-----------: | :-----------: | :-----------: |
+| :-----------: | :-----------: | ------------- |
 | ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DrvierMain.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. <br/> <br/> [ User Guide ] <br/> 1. Listen example speech for the word. <br/> 2. Look at the example sentences to see how this word would be used. <br/> 3. Record your voice. <br/> 4. Press the next button to practice as many times as you want. <br/> 5. Click stop button and check out the learning report.  |
 
 ---
