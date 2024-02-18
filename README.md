@@ -79,13 +79,8 @@ After completing all the steps described in the instructions, connect your `mobi
 
 PROJECT DEVELOPED BY
 --------------------
-#### Our team members and their positions in the project:
-* [Kapparova Aknur](https://github.com/aknurkappar) — Front-End Developer
-* [Amen Azat](https://github.com/azikkw) — Front-End Developer
-* [Kazieva Dina](https://github.com/KDindin) — Back-End Developer
-* [Kabdrakhmanov Altair](https://github.com/altair2503) — Back-End Developer
 
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
 | :-----------: | :-----------: | :-----------: | :-----------: |
-| ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  |
+| ![Aknur Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AknurPhoto.jpg)  | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  |
 | Front-End Developer  | Front-End Developer  | Back-End Developer  | Back-End Developer  |
