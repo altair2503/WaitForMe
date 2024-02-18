@@ -14,6 +14,7 @@ USED TECHNOLOGIES
 -----------------
 #### To create our project, we used technologies such as
 * Flutter⠀—⠀Firebase⠀—⠀Google Cloud⠀—⠀Dart⠀—⠀Google Maps
+  
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
 ---
