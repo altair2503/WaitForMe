@@ -5,30 +5,30 @@
 ---
 
 PROJECT DEMO VIDEO
------------------------
+------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
 
 ---
 
 USED TECHNOLOGIES
------------------------
+-----------------
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 #### To create our project, we used technologies such as
 * Flutter⠀—⠀Firebase⠀—⠀Google Cloud⠀—⠀Dart⠀—⠀Google Maps
 
 ---
 
-FEATURES
------------------------
+PROJECT FEATURES
+----------------
 ### 1. PWD Part
 | Main Screen  | Overview  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainPage.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. <br/> <br/> [ User Guide ] <br/> 1. Listen example speech for the word. <br/> 2. Look at the example sentences to see how this word would be used. <br/> 3. Record your voice. <br/> 4. Press the next button to practice as many times as you want. <br/> 5. Click stop button and check out the learning report.  |
+| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainPage.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | **PWD** part consists of 4 screens. All processes are accompanied by a voice assistant. <br/><br/> 1. **Main Screen:** Select the number of buses you need and click notify. <br/> 2. **Notifying Page:** Drivers are notified here. <br/> 3. **Waiting Page:** Here you are waiting for the driver, after entering the bus, press `"I'm in bus"`. <br/> 4. **City Selection Page:** Here you can choose a city. <br/><br/> **[Note]** <br/> 1. In the process of notifying and waiting for drivers, you can opt out by clicking `Cancel`.  |
 
-### 2. Drvier Part
+### 2. Driver Part
 | Main Screen  | Bus Changing  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DrvierMainPage.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. <br/> <br/> [ User Guide ] <br/> 1. Listen example speech for the word. <br/> 2. Look at the example sentences to see how this word would be used. <br/> 3. Record your voice. <br/> 4. Press the next button to practice as many times as you want. <br/> 5. Click stop button and check out the learning report.  |
+| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMainPage.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation. <br/> <br/> [ User Guide ] <br/> 1. Listen example speech for the word. <br/> 2. Look at the example sentences to see how this word would be used. <br/> 3. Record your voice. <br/> 4. Press the next button to practice as many times as you want. <br/> 5. Click stop button and check out the learning report.  |
 
 ---
 
