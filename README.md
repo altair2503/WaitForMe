@@ -22,7 +22,7 @@ FEATURES
 -----------------------
 | Main Screen  | Overview  | Explanation  |
 | :-----------: | :-----------: | :-----------: |
-| [Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/MainPwd.png)  | [Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | Back-End Developer  |
+| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/MainPwd.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | Back-End Developer  |
 
 ---
 
