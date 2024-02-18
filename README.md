@@ -23,7 +23,6 @@ FEATURES
 | Main Screen  | Overview  | Explanation  |
 | :-----------: | :-----------: | :-----------: |
 | ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/MainPwd.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | To help you learn pronunciation systematically, there are 6 categories organized by pronunciation.
-
 [ User Guide ]
 1. Listen example speech for the word.
 2. Look at the example sentences to see how this word would be used.
