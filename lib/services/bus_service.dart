@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:wait_for_me/models/bus_model.dart';
@@ -7,6 +8,13 @@ import 'package:wait_for_me/services/location_service.dart';
 class BusService {
   static BusService? _instance;
   String? _driverBusNumber;
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  Future<String> getDeviceToken() async {
+    String? token = await messaging.getToken();
+    print(token);
+    return token!;
+  }
 
   String? get driverBusNumber {
     if (_driverBusNumber == null) {
@@ -39,7 +47,7 @@ class BusService {
           .toList();
       for (int i = 0; i < dataList.length; i++) {
         for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j] == user?.id) {
+          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
             return true;
           }
         }
@@ -64,7 +72,9 @@ class BusService {
           print(busId);
         });
         await FirebaseFirestore.instance.collection('buses').doc(busId).update({
-          "drivers_id": FieldValue.arrayUnion([user.id])
+          "drivers_id": FieldValue.arrayUnion([
+            {"id": user.id, "device_token": await getDeviceToken()}
+          ])
         });
       }
     } catch (e) {
@@ -88,7 +98,7 @@ class BusService {
           .toList();
       for (int i = 0; i < dataList.length; i++) {
         for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j] == user?.id) {
+          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
             await buses.doc(dataList[i]['id']).update({
               "drivers_id": FieldValue.arrayRemove([
                 dataList[i]['drivers_id'][j],
@@ -118,7 +128,7 @@ class BusService {
           .toList();
       for (int i = 0; i < dataList.length; i++) {
         for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j] == user?.id) {
+          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
             driverBusNumber = dataList[i]['number'];
             return Bus(number: driverBusNumber);
           }
@@ -131,8 +141,11 @@ class BusService {
   }
 
   static Stream<List<Bus>> getBuses() {
-    return FirebaseFirestore.instance.collection("buses").orderBy("number_int").snapshots().map(
-        (snapshot) =>
+    return FirebaseFirestore.instance
+        .collection("buses")
+        .orderBy("number_int")
+        .snapshots()
+        .map((snapshot) =>
             snapshot.docs.map((doc) => Bus.fromJson(doc.data())).toList());
   }
 

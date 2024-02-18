@@ -1,7 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/services/bus_service.dart';
+import 'package:wait_for_me/services/notification_service.dart';
 
 class NotifyingPage extends StatefulWidget {
   final List<Bus> selectedBusNumbers;
@@ -23,13 +25,30 @@ class _NotifyingPageState extends State<NotifyingPage> {
   @override
   void initState() {
     super.initState();
+    NotificationService.instance?.requestNotificationPermission();
+    NotificationService.instance?.forgroundMessage();
+    NotificationService.instance?.firebaseInit(context);
+    NotificationService.instance?.setupInteractMessage(context);
+    NotificationService.instance?.isTokenRefresh();
+
+    NotificationService.instance?.getDeviceToken().then((value) {
+      if (kDebugMode) {
+        print('device token');
+        print(value);
+      }
+    });
+
     makeNotify();
   }
 
-  void makeNotify() {
-    BusService.addUser(selectedBusNumbers).then((value) => {
-      Future.delayed(const Duration(milliseconds: 3000)).then((value) => setState((){found = true;}))      
-    });
+  void makeNotify() async {
+    await NotificationService.instance
+        ?.getAllBusDriverDeviceTokens(selectedBusNumbers); // BusService.addUser(selectedBusNumbers).then((value) => {
+    //       Future.delayed(const Duration(milliseconds: 3000))
+    //           .then((value) => setState(() {
+    //                 found = true;
+    //               }))
+    //     });
   }
 
   @override
@@ -170,9 +189,9 @@ class _NotifyingPageState extends State<NotifyingPage> {
                           Expanded(
                               child: TextButton(
                                   onPressed: () => {
-                                    BusService.removeUser(),
-                                    Navigator.pop(context)
-                                  },
+                                        BusService.removeUser(),
+                                        Navigator.pop(context)
+                                      },
                                   style: TextButton.styleFrom(
                                       backgroundColor: found
                                           ? const Color.fromRGBO(
