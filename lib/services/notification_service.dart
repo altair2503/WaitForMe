@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
+import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:wait_for_me/models/bus_model.dart';
 
 class NotificationService {
@@ -32,8 +33,33 @@ class NotificationService {
     _instance = NotificationService._();
   }
 
-  Future<void> getAllBusDriverDeviceTokens(List<Bus> busNumbers) async {
-    final List<String> driverDeviceTokens = [];
+  // Future<void> sendNotificationToPwD(String distanceInfo) async {
+  //   final user = await AuthService.firebase().getCurrentUser();
+    
+
+  //   final buses = FirebaseFirestore.instance.collection('buses');
+  //   QuerySnapshot querySnapshot = await buses.get();
+  //   List<Map<String, dynamic>> dataList = querySnapshot.docs
+  //       .map((doc) => doc.data() as Map<String, dynamic>)
+  //       .toList();
+  //   for (int i = 0; i < dataList.length; i++) {
+  //     print('sendNotificationToPwD ${dataList[i]['number']}');
+
+  //     if (busNumbers.map((bus) => bus.number).contains(dataList[i]['number'])) {
+  //       // print("getAllBusDriverDeviceTokens contains ${busNumbers[i].number}");
+  //       for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
+  //         print('sendNotificationToPwD ${dataList[i]['drivers_id'][j]}');
+  //         notificationSender(dataList[i]['drivers_id'][j]['device_token'],
+  //             'Bus is coming!', 'Bus will arrive in $distanceInfo');
+  //       }
+  //     } else {
+  //       print("sendNotificationToPwD not contains");
+  //     }
+  //   }
+  // }
+
+  Future<void> sendNotificationToDrivers(List<Bus> busNumbers) async {
+    // final List<String> driverDeviceTokens = [];
     for (int i = 0; i < busNumbers.length; i++) {
       print('Number: ${busNumbers[i].number}');
       final buses = FirebaseFirestore.instance.collection('buses');
@@ -42,37 +68,44 @@ class NotificationService {
           .map((doc) => doc.data() as Map<String, dynamic>)
           .toList();
       for (int i = 0; i < dataList.length; i++) {
+        print('getAllBusDriverDeviceTokens ${dataList[i]['number']}');
         if (busNumbers
             .map((bus) => bus.number)
             .contains(dataList[i]['number'])) {
-          print("contains ${busNumbers[i].number}");
+          // print("getAllBusDriverDeviceTokens contains ${busNumbers[i].number}");
           for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-            print(dataList[i]['drivers_id'][j]);
-            driverDeviceTokens
-                .add(dataList[i]['drivers_id'][j]['device_token']);
-            sendNotification(dataList[i]['drivers_id'][j]['device_token']);
+            print(
+                'getAllBusDriverDeviceTokens ${dataList[i]['drivers_id'][j]}');
+            notificationSender(dataList[i]['drivers_id'][j]['device_token'],
+                'Wait for me', 'One person waiting for you');
+            // send notification only if they're close
           }
         } else {
-          print("not contains ${busNumbers[i].number}");
+          print("getAllBusDriverDeviceTokens not contains");
         }
       }
     }
   }
 
-  void sendNotification(String driverDeviceToken) async {
-    print(driverDeviceToken);
+  void notificationSender(
+      String deviceToken, String title, String bodyText) async {
+    print('-> sendNotification');
+    print('-> sendNotification $deviceToken');
+    print('-> sendNotification $title');
+    print('-> sendNotification $bodyText');
+
     var data = {
-      'to': driverDeviceToken,
+      'to': deviceToken,
       'notification': {
-        'title': 'Wait for me',
-        'body': 'One person waiting for you',
+        'title': title,
+        'body': bodyText,
       },
       'android': {
         'notification': {
           'notification_count': 23,
         },
       },
-      'data': {'type': 'msj', 'id': 'Asif Taj'}
+      'data': {'type': 'msj', 'id': ''}
     };
 
     await http.post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
@@ -91,7 +124,6 @@ class NotificationService {
     });
   }
 
-  //function to initialise flutter local notification plugin to show notifications for android when app is active
   void initLocalNotifications(
       BuildContext context, RemoteMessage message) async {
     var androidInitializationSettings =
@@ -103,7 +135,6 @@ class NotificationService {
 
     await _flutterLocalNotificationsPlugin.initialize(initializationSetting,
         onDidReceiveNotificationResponse: (payload) {
-      // handle interaction when app is active for android
       handleMessage(context, message);
     });
   }
@@ -152,14 +183,12 @@ class NotificationService {
         print('user granted provisional permission');
       }
     } else {
-      //appsetting.AppSettings.openNotificationSettings();
       if (kDebugMode) {
         print('user denied permission');
       }
     }
   }
 
-  // function to show visible notification when app is active
   Future<void> showNotification(RemoteMessage message) async {
     AndroidNotificationChannel channel = AndroidNotificationChannel(
       message.notification!.android!.channelId.toString(),
@@ -167,20 +196,17 @@ class NotificationService {
       importance: Importance.max,
       showBadge: true,
       playSound: true,
-      // sound: const RawResourceAndroidNotificationSound('pn-sound')
     );
 
     AndroidNotificationDetails androidNotificationDetails =
         AndroidNotificationDetails(
-      channel.id.toString(), channel.name.toString(),
+      channel.id.toString(),
+      channel.name.toString(),
       channelDescription: 'your channel description',
       importance: Importance.high,
       priority: Priority.high,
       playSound: true,
       ticker: 'ticker',
-      // sound: channel.sound
-      // sound: const RawResourceAndroidNotificationSound('pn-sound')
-      //  icon: largeIconPath
     );
 
     const DarwinNotificationDetails darwinNotificationDetails =
@@ -200,7 +226,6 @@ class NotificationService {
     });
   }
 
-  //function to get device token on which we will send the notifications
   Future<String> getDeviceToken() async {
     String? token = await messaging.getToken();
     return token!;
@@ -234,10 +259,6 @@ class NotificationService {
   void handleMessage(BuildContext context, RemoteMessage message) {
     if (message.data['type'] == 'msj') {
       print('Message data: ${message.data['id']}');
-      // Navigator.push(context,
-      //     MaterialPageRoute(builder: (context) => MessageScreen(
-      //       id: message.data['id'] ,
-      //     )));
     }
   }
 
@@ -250,23 +271,3 @@ class NotificationService {
     );
   }
 }
-
-
-  // Future<void> sendNotification() async {
-  //   print("sendNotification");
-  //   final data = {
-  //     'to': await getDeviceToken(),
-  //     'priority': 'high',
-  //     'notification': {
-  //       'title': 'Wait for me',
-  //       'body': 'One person waiting for you'
-  //     },
-  //   };
-
-  //   await http.post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
-  //       body: jsonEncode(data),
-  //       headers: {
-  //         'Content-Type': 'application/json; charset=UTF-8',
-  //         'Authorization': 'key=$cloudMessagingAPI'
-  //       });
-  // }

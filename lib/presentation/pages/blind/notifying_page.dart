@@ -1,6 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:location/location.dart';
 import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/services/bus_service.dart';
 import 'package:wait_for_me/services/notification_service.dart';
@@ -16,11 +20,23 @@ class NotifyingPage extends StatefulWidget {
 }
 
 class _NotifyingPageState extends State<NotifyingPage> {
+  _NotifyingPageState({required this.selectedBusNumbers});
+
   bool found = false;
 
   final List<Bus> selectedBusNumbers;
 
-  _NotifyingPageState({required this.selectedBusNumbers});
+  Location location = Location();
+  GoogleMapController? mapController;
+  LatLng bus = const LatLng(43.254916, 76.943788);
+  BitmapDescriptor markerIcon =
+      BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet);
+  List<Marker> markerList = [];
+  double remainingDistance = 0.0;
+  var destinations = [];
+  var usersInfo = [];
+  final FlutterTts flutterTts = FlutterTts();
+  var speachState = false;
 
   @override
   void initState() {
@@ -42,13 +58,14 @@ class _NotifyingPageState extends State<NotifyingPage> {
   }
 
   void makeNotify() async {
+    BusService.instance?.addUser(selectedBusNumbers);
+
     await NotificationService.instance
-        ?.getAllBusDriverDeviceTokens(selectedBusNumbers); // BusService.addUser(selectedBusNumbers).then((value) => {
-    //       Future.delayed(const Duration(milliseconds: 3000))
-    //           .then((value) => setState(() {
-    //                 found = true;
-    //               }))
-    //     });
+        ?.sendNotificationToDrivers(selectedBusNumbers);
+
+    // final deviceToken = await NotificationService.instance?.getDeviceToken();
+    // NotificationService.instance
+    //     ?.sendNotificationToPwD(deviceToken!, 'Bus will arrive after soon');
   }
 
   @override
@@ -168,7 +185,7 @@ class _NotifyingPageState extends State<NotifyingPage> {
                             Expanded(
                                 child: TextButton(
                               onPressed: () => {
-                                BusService.removeUser(),
+                                BusService.instance?.removeUser(),
                                 Navigator.pop(context)
                               },
                               style: TextButton.styleFrom(
@@ -189,7 +206,7 @@ class _NotifyingPageState extends State<NotifyingPage> {
                           Expanded(
                               child: TextButton(
                                   onPressed: () => {
-                                        BusService.removeUser(),
+                                        BusService.instance?.removeUser(),
                                         Navigator.pop(context)
                                       },
                                   style: TextButton.styleFrom(

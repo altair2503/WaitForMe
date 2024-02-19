@@ -1,5 +1,5 @@
-import 'package:flutter_tts/flutter_tts.dart';
 import 'package:location/location.dart';
+import 'package:pair/pair.dart';
 import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -9,7 +9,12 @@ import 'package:geolocator/geolocator.dart';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wait_for_me/models/bus_model.dart';
+import 'package:wait_for_me/services/bus_service.dart';
+import 'package:wait_for_me/services/notification_service.dart';
 import 'dart:convert';
+
+import 'package:wait_for_me/services/tts_service.dart';
 
 class GoogleMapPage extends StatefulWidget {
   const GoogleMapPage({super.key});
@@ -19,27 +24,17 @@ class GoogleMapPage extends StatefulWidget {
 }
 
 class _GoogleMapPageState extends State<GoogleMapPage> {
+  late Bus? driverBusNumber;
   Location location = Location();
   GoogleMapController? mapController;
   LatLng bus = const LatLng(43.254916, 76.943788);
   BitmapDescriptor markerIcon =
       BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet);
   List<Marker> markerList = [];
-  double remainingDistance = 0.0;
+  Pair<String, double> remainingDistance = Pair("id", 0.0);
   var destinations = [];
   var usersInfo = [];
-  final FlutterTts flutterTts = FlutterTts();
   var speachState = false;
-
-  Future<void> speak(text) async {
-    try {
-      await flutterTts.setLanguage("en-US"); // Set desired language
-      await flutterTts.setSpeechRate(0.4);
-      await flutterTts.speak(text);
-    } catch (e) {
-      print(e);
-    }
-  }
 
   void changeMapMode(GoogleMapController mapController) {
     getJsonFile("assets/map_style.json")
@@ -85,28 +80,32 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     usersDistance(busPos);
   }
 
-  void usersDistance(busPos) {
-    List<double> usersDistanceList = [];
+  void usersDistance(busPos) async {
+    driverBusNumber = await BusService.instance?.getDriverBusNumber();
+    List<Pair<String, double>> usersDistanceList = [];
     for (var user in usersInfo) {
       var distance = calculateDistance(
           busPos, LatLng(user['latitude'], user['longitude']));
       print("distance $distance");
-      usersDistanceList.add(distance);
+      usersDistanceList.add(Pair(user['device_token'], distance));
     }
+
     setState(() {
-      remainingDistance =
-          usersDistanceList.reduce((curr, next) => curr < next ? curr : next);
+      remainingDistance = usersDistanceList
+          .reduce((curr, next) => curr.value < next.value ? curr : next);
     });
 
-    print(speachState);
-
     if (speachState == false &&
-        remainingDistance > 30 &&
-        remainingDistance <= 300) {
-      speak(
-          "A person with disabilities is waiting for you ${remainingDistance.toInt() - remainingDistance.toInt() % 10} meters away");
+        remainingDistance.value > 30 &&
+        remainingDistance.value <= 300) {
+      TtsService.instance?.driverSpeech((remainingDistance.value.toInt() -
+              remainingDistance.value.toInt() % 10)
+          .toString());
+
       speachState = true;
-    } else if (remainingDistance <= 30) {
+    } else if (remainingDistance.value <= 30) {
+      NotificationService.instance?.notificationSender(remainingDistance.key,
+          'Wait for me', 'Bus number ${driverBusNumber?.number} will arrive soon');
       speachState = false;
     }
   }
@@ -117,9 +116,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     return distance;
   }
 
-  Future<void> updateMarkersFromFirestore(
-      QuerySnapshot<Map<String, dynamic>> snapshot) async {
-    var userData = snapshot.docs[0].data()['users_info'];
+  Future<void> updateMarkersFromFirestore(Map<String, dynamic> data) async {
+    var userData = data['users_info'];
     List<Marker> newMarkerList = [];
 
     setState(() {
@@ -166,15 +164,17 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 
   Future<void> subscribeToFirestore() async {
     final user = await AuthService.firebase().getCurrentUser();
-    if (user != null) {
-      FirebaseFirestore.instance
-          .collection('buses')
-          .where('drivers_id',
-              arrayContains: user.id) // Change to your collection name
-          .snapshots()
-          .listen((QuerySnapshot<Map<String, dynamic>> snapshot) {
-        updateMarkersFromFirestore(snapshot);
-      });
+    QuerySnapshot querySnapshot =
+        await FirebaseFirestore.instance.collection('buses').get();
+    List<Map<String, dynamic>> dataList = querySnapshot.docs
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+    for (int i = 0; i < dataList.length; i++) {
+      for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
+        if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+          updateMarkersFromFirestore(dataList[i]);
+        }
+      }
     }
   }
 
@@ -261,7 +261,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
                         color: Colors.black.withOpacity(.15), width: .4)),
               ),
               child: Text(
-                "Remaining Distance: ${remainingDistance > 1000 ? (remainingDistance / 1000).toStringAsFixed(1) + 'km' : remainingDistance.toStringAsFixed(0) + 'm'}",
+                "Remaining Distance: ${remainingDistance.value > 1000 ? (remainingDistance.value / 1000).toStringAsFixed(1) + 'km' : remainingDistance.value.toStringAsFixed(0) + 'm'}",
                 style: const TextStyle(fontSize: 16),
               ),
             ),

@@ -1,8 +1,11 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
 
 import 'package:wait_for_me/presentation/pages/driver/map_page.dart';
 import 'package:wait_for_me/presentation/pages/driver/profile_page.dart';
+import 'package:wait_for_me/services/bus_service.dart';
+import 'package:wait_for_me/services/notification_service.dart';
 
 class DriverNavigationPage extends StatefulWidget {
   const DriverNavigationPage({super.key});
@@ -12,6 +15,25 @@ class DriverNavigationPage extends StatefulWidget {
 }
 
 class _DriverNavigationPageState extends State<DriverNavigationPage> {
+
+
+  @override
+  void initState() {
+    super.initState();
+    NotificationService.instance?.requestNotificationPermission();
+    NotificationService.instance?.forgroundMessage();
+    NotificationService.instance?.firebaseInit(context);
+    NotificationService.instance?.setupInteractMessage(context);
+    NotificationService.instance?.isTokenRefresh();
+
+    NotificationService.instance?.getDeviceToken().then((value) {
+      if (kDebugMode) {
+        print('device token $value');
+        print(value);
+      }
+    });
+    BusService.instance?.setNewToken();
+  }
 
   List<Widget> pages = [
     const MapPage(),

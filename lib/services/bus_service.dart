@@ -7,20 +7,12 @@ import 'package:wait_for_me/services/location_service.dart';
 
 class BusService {
   static BusService? _instance;
-  String? _driverBusNumber;
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   Future<String> getDeviceToken() async {
     String? token = await messaging.getToken();
-    print(token);
+    print('New token!!! $token');
     return token!;
-  }
-
-  String? get driverBusNumber {
-    if (_driverBusNumber == null) {
-      getDriverBusNumber();
-    }
-    return _driverBusNumber;
   }
 
   static BusService? get instance {
@@ -149,7 +141,7 @@ class BusService {
             snapshot.docs.map((doc) => Bus.fromJson(doc.data())).toList());
   }
 
-  static Future<bool> addUser(List<Bus> buses) async {
+  Future<bool> addUser(List<Bus> buses) async {
     try {
       final user = await AuthService.firebase().getCurrentUser();
       LatLng currentLocation = await LocationService.requestLocation();
@@ -160,7 +152,8 @@ class BusService {
             {
               "id": user?.id,
               "latitude": currentLocation.latitude,
-              "longitude": currentLocation.longitude
+              "longitude": currentLocation.longitude,
+              "device_token":  await getDeviceToken()
             }
           ])
         });
@@ -172,7 +165,7 @@ class BusService {
     return false;
   }
 
-  static Future<bool> removeUser() async {
+  Future<bool> removeUser() async {
     final user = await AuthService.firebase().getCurrentUser();
     try {
       final buses = FirebaseFirestore.instance.collection("buses");
@@ -192,7 +185,8 @@ class BusService {
                 {
                   "id": dataList[i]['users_info'][j]['id'],
                   "latitude": dataList[i]['users_info'][j]['latitude'],
-                  "longitude": dataList[i]['users_info'][j]['longitude']
+                  "longitude": dataList[i]['users_info'][j]['longitude'],
+                  "device_token":  await getDeviceToken()
                 }
               ])
             });
@@ -204,5 +198,14 @@ class BusService {
       print('Error: ${e.toString()}');
     }
     return false;
+  }
+
+  Future<void> setNewToken() async {
+    final bool isActive = await driverIsActive();
+    if (isActive) {
+      final busNumber = await getDriverBusNumber();
+      print('token busnumber1: ${busNumber!.number}');
+      await changeBusNumber(number: busNumber.number);
+    }
   }
 }
