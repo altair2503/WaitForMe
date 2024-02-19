@@ -19,6 +19,12 @@ USED TECHNOLOGIES
 
 ---
 
+PROJECT ARCHITECTURE
+------------------
+![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/Architecture.png)
+
+---
+
 PROJECT FEATURES
 ----------------
 ### 1. PWD Part
