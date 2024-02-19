@@ -104,8 +104,18 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 
       speachState = true;
     } else if (remainingDistance.value <= 30) {
-      NotificationService.instance?.notificationSender(remainingDistance.key,
-          'Wait for me', 'Bus number ${driverBusNumber?.number} will arrive soon');
+      // check if notified
+      // code... 
+      //?????
+      for(var user in usersInfo){
+        if(user['notified'] == true){
+           NotificationService.instance?.notificationSender(
+          remainingDistance.key,
+          'Wait for me',
+          'Bus number ${driverBusNumber?.number} will arrive soon');
+      BusService.instance?.userNotified(remainingDistance.key);
+        }
+      }
       speachState = false;
     }
   }

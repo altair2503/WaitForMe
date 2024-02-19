@@ -7,7 +7,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:http/http.dart' as http;
-import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:wait_for_me/models/bus_model.dart';
 
 class NotificationService {
@@ -33,30 +32,6 @@ class NotificationService {
     _instance = NotificationService._();
   }
 
-  // Future<void> sendNotificationToPwD(String distanceInfo) async {
-  //   final user = await AuthService.firebase().getCurrentUser();
-    
-
-  //   final buses = FirebaseFirestore.instance.collection('buses');
-  //   QuerySnapshot querySnapshot = await buses.get();
-  //   List<Map<String, dynamic>> dataList = querySnapshot.docs
-  //       .map((doc) => doc.data() as Map<String, dynamic>)
-  //       .toList();
-  //   for (int i = 0; i < dataList.length; i++) {
-  //     print('sendNotificationToPwD ${dataList[i]['number']}');
-
-  //     if (busNumbers.map((bus) => bus.number).contains(dataList[i]['number'])) {
-  //       // print("getAllBusDriverDeviceTokens contains ${busNumbers[i].number}");
-  //       for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-  //         print('sendNotificationToPwD ${dataList[i]['drivers_id'][j]}');
-  //         notificationSender(dataList[i]['drivers_id'][j]['device_token'],
-  //             'Bus is coming!', 'Bus will arrive in $distanceInfo');
-  //       }
-  //     } else {
-  //       print("sendNotificationToPwD not contains");
-  //     }
-  //   }
-  // }
 
   Future<void> sendNotificationToDrivers(List<Bus> busNumbers) async {
     // final List<String> driverDeviceTokens = [];

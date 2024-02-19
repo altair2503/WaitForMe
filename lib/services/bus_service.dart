@@ -153,7 +153,8 @@ class BusService {
               "id": user?.id,
               "latitude": currentLocation.latitude,
               "longitude": currentLocation.longitude,
-              "device_token":  await getDeviceToken()
+              "device_token":  await getDeviceToken(),
+              "notified" : false
             }
           ])
         });
@@ -186,7 +187,43 @@ class BusService {
                   "id": dataList[i]['users_info'][j]['id'],
                   "latitude": dataList[i]['users_info'][j]['latitude'],
                   "longitude": dataList[i]['users_info'][j]['longitude'],
-                  "device_token":  await getDeviceToken()
+                  "device_token":  dataList[i]['users_info'][j]['device_token'],
+                  "notified" : dataList[i]['users_info'][j]['notified'],
+                }
+              ])
+            });
+          }
+        }
+      }
+      return true;
+    } catch (e) {
+      print('Error: ${e.toString()}');
+    }
+    return false;
+  }
+
+  Future<bool> userNotified(String userDeviceToken) async {
+    try {
+      final buses = FirebaseFirestore.instance.collection("buses");
+      // Get the documents from the collection
+      QuerySnapshot querySnapshot = await buses.get();
+
+      // Extract data from documents
+      List<Map<String, dynamic>> dataList = querySnapshot.docs
+          .map((doc) => doc.data() as Map<String, dynamic>)
+          .toList();
+
+      for (int i = 0; i < dataList.length; i++) {
+        for (int j = 0; j < dataList[i]['users_info'].length; j++) {
+          if (dataList[i]['users_info'][j]['device_token'] == userDeviceToken) {
+            buses.doc(dataList[i]['id']).update({
+              "users_info": FieldValue.arrayUnion([
+                {
+                  "id": dataList[i]['users_info'][j]['id'],
+                  "latitude": dataList[i]['users_info'][j]['latitude'],
+                  "longitude": dataList[i]['users_info'][j]['longitude'],
+                  "device_token":  dataList[i]['users_info'][j]['device_token'],
+                  "notified" : true,
                 }
               ])
             });
