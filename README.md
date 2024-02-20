@@ -5,27 +5,28 @@
 
 ---
 
-UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
+🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
 ------------------
-Our app connects people with disabilities and bus drivers, crucial for breaking down barriers to PwDs daily life. In doing so, we're not just addressing the specific needs of a PwD, but we're actively contributing to the implementation of two key United Nations Sustainable Development Goals:
+Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
 
 ### SDG 10: Reduced Inequalities (Target 10.2)
 ![SDG10](https://github.com/altair2503/WaitForMe/blob/main/readme/SDG10.png)
-> WaitForMe directly addresses the social inclusion and mobility needs of people with disabilities, aligning perfectly with *Target 10.2* (Empower and promote the social, economic and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, religion or economic or other status).
+> *Target 10.2* Promote Universal Social, Economic and Political Inclusion - empower and promote the social, economic and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, religion or economic or other status.
 
 ### SDG 11: Sustainable Cities and Communities (Target 11.2)
 ![SDG11](https://github.com/altair2503/WaitForMe/blob/main/readme/SDG11.png)
-> WaitForMe directly addresses the social inclusion and mobility needs of people with disabilities, aligning perfectly with *Target 11.2* (Provide access to safe, affordable, accessible and sustainable transport systems for all).
+> *Target 11.2* Affordable and Sustainable Transport Systems - provide access to safe, affordable, accessible and sustainable transport systems for all, improving road safety, notably by expanding public transport, with special attention to the needs of those in vulnerable situations, women, children, persons with disabilities and older persons.
 
 ---
 
-PROJECT DEMO VIDEO
+🎥 PROJECT DEMO VIDEO
 ------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
+> Video Link: soon...
 
 ---
 
-USED TECHNOLOGIES
+🧰 USED TECHNOLOGIES
 -----------------
 #### To create our project, we used technologies such as
 * Flutter — Firebase — Google Cloud — Dart — Google Maps
@@ -34,13 +35,13 @@ USED TECHNOLOGIES
 
 ---
 
-PROJECT ARCHITECTURE
+🛠️ PROJECT ARCHITECTURE
 ------------------
 ![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/ProjectArchitecture.png)
 
 ---
 
-PROJECT FEATURES
+📱 PROJECT FEATURES
 ----------------
 ### 1. PWD Part
 | Main Screen  | Overview  | Overview  |
@@ -54,14 +55,14 @@ PROJECT FEATURES
 
 ---
 
-PREPARING FOR IMPORTING
+📝 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
 [Flutter](https://docs.flutter.dev/get-started/install) version 3.19.0 [min] and more.
 
 This is the official documentation of Flutter, **follow the instructions** in this article to install it.
 
-IMPORTING
+📤 IMPORTING
 ---------
 Step-by-step instructions for importing the `WaitForMe` project.
 
@@ -105,7 +106,7 @@ To do this, you need to enter the following command:
 
 ---
 
-PROJECT START
+▶️ PROJECT START
 -------------
 After completing all the steps described in the instructions, connect your `mobile device` or `emulator`, and launch the project by typing the following command in the command prompt:
 
@@ -113,7 +114,7 @@ After completing all the steps described in the instructions, connect your `mobi
 
 ---
 
-DEVELOPED BY
+👨🏻‍💻 DEVELOPED BY
 --------------------
 
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
