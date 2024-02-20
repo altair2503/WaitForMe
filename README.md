@@ -4,6 +4,20 @@
 
 ---
 
+UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
+------------------
+Our app connects people with disabilities and bus drivers, crucial for breaking down barriers to PwDs daily life. In doing so, we're not just addressing the specific needs of a PwD, but we're actively contributing to the implementation of two key United Nations Sustainable Development Goals:
+
+### SDG 10: Reduced Inequalities (Target 10.2)
+![SDG10](https://github.com/altair2503/WaitForMe/blob/main/readme/SDG10.png)
+WaitForMe directly addresses the social inclusion and mobility needs of people with disabilities, aligning perfectly with *Target 10.2* (Empower and promote the social, economic and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, religion or economic or other status).
+
+### SDG 11: Sustainable Cities and Communities (Target 11.2)
+![SDG11](https://github.com/altair2503/WaitForMe/blob/main/readme/SDG11.png)
+WaitForMe directly addresses the social inclusion and mobility needs of people with disabilities, aligning perfectly with *Target 11.2* (Provide access to safe, affordable, accessible and sustainable transport systems for all).
+
+---
+
 PROJECT DEMO VIDEO
 ------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
