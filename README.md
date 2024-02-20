@@ -21,7 +21,7 @@ USED TECHNOLOGIES
 
 PROJECT ARCHITECTURE
 ------------------
-![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/Architecture.png)
+![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/ProjectArchitecture.png)
 
 ---
 
@@ -98,7 +98,7 @@ After completing all the steps described in the instructions, connect your `mobi
 
 ---
 
-PROJECT DEVELOPED BY
+DEVELOPED BY
 --------------------
 
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
