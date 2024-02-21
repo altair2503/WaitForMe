@@ -8,7 +8,7 @@
 TABLE OF CONTENT
 ----------------
 <ol>
-  <li><a href="#un's-sustainable-development-goals-and-targets">🎯 UN's Sustainable Development Goals And Targets</a></li>
+  <li><a href="#un's-sustainable-development-goals-and-targets">🎯 UN's SDG And Targets</a></li>
   <li><a href="#project-demo-video">🎥 Demo Video</a></li>
   <li><a href="#used-technologies">🧰 Used Technologies</a></li>
   <li><a href="#project-architecture">🛠️ Project Architecture</a></li>
@@ -36,6 +36,7 @@ Our application actively contributes to the implementation of two key United Nat
 ---
 
 <div id="project-demo-video"></div>
+
 🎥 PROJECT DEMO VIDEO
 ------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
@@ -44,6 +45,7 @@ Our application actively contributes to the implementation of two key United Nat
 ---
 
 <div id=used-technologies"></div>
+
 🧰 USED TECHNOLOGIES
 -----------------
 #### To create our project, we used technologies such as
@@ -54,6 +56,7 @@ Our application actively contributes to the implementation of two key United Nat
 ---
 
 <div id="projetc-architecture"></div>
+
 🛠️ PROJECT ARCHITECTURE
 ------------------
 ![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/ProjectArchitecture.png)
@@ -61,6 +64,7 @@ Our application actively contributes to the implementation of two key United Nat
 ---
 
 <div id="project-features"></div>
+
 📱 PROJECT FEATURES
 ----------------
 ### 1. PWD Part
@@ -76,6 +80,7 @@ Our application actively contributes to the implementation of two key United Nat
 ---
 
 <div id="importing"></div>
+
 📝 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
@@ -136,6 +141,7 @@ After completing all the steps described in the instructions, connect your `mobi
 ---
 
 <div id="developers"></div>
+
 👨🏻‍💻 DEVELOPED BY
 --------------------
 
