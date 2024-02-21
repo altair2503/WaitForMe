@@ -16,8 +16,7 @@ TABLE OF CONTENT
 
 ---
 
-🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
-------------------
+## 🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
 Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
 
 ### SDG 10: Reduced Inequalities (Target 10.2)
