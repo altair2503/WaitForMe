@@ -20,6 +20,7 @@ TABLE OF CONTENT
 ---
 
 <div id="un's-sustainable-development-goals-and-targets"></div>
+
 🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
 -----------------------------------------------
 Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
