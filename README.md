@@ -55,7 +55,7 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
-<div id="projetc-architecture"></div>
+<div id="project-architecture"></div>
 
 🛠️ PROJECT ARCHITECTURE
 ------------------
@@ -150,3 +150,7 @@ After completing all the steps described in the instructions, connect your `mobi
 | Front-End Developer  | Front-End Developer  | Back-End Developer  | Back-End Developer  |
 | ![Aknur Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AknurPhoto.jpg)  | ![Azat Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/Dina.jpg)  | ![Altair Photo](https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg)  |
 | [Aknur Linkedin](https://www.linkedin.com/in/aknurkapparova/)  | [Azat Linkedin](https://www.linkedin.com/in/azikkw/)  | [Dina Linkedin](https://www.linkedin.com/in/dina-kaziyeva-3565622b5/)  | [Altair Linkedin](https://www.linkedin.com/in/kabdrakhmanov/)  |
+
+---
+
+<p align="center"><li><a href="#developers">⬆️ To the top</a></li></p>
