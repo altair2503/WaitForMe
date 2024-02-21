@@ -1,25 +1,29 @@
-import 'dart:convert';
 import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter/foundation.dart';
+import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:http/http.dart' as http;
+import 'package:wait_for_me/auth/auth_service.dart';
+
 import 'package:wait_for_me/models/bus_model.dart';
 
-class NotificationService {
-  static NotificationService? _instance;
-  FirebaseMessaging messaging = FirebaseMessaging.instance;
-  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
 
-  final cloudMessagingAPI =
-      'AAAAVz_7iFQ:APA91bGhwz3gGn3l4kLl1jqxWYxzDJC4uRLFun4IRi5_OU1f6f6gng37pKTSFZ1WzLGFW4ox6s_ozW2cs7xp1J5YdNjMtrWqNydnFlvA0FuAWWzMKR-WfEWFbuv904DXCR0qdCs1o2vj';
+class NotificationService {
+
+  static NotificationService? _instance;
+  
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  
+  final FlutterLocalNotificationsPlugin _flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+
+  final cloudMessagingAPI = 'AAAAVz_7iFQ:APA91bGhwz3gGn3l4kLl1jqxWYxzDJC4uRLFun4IRi5_OU1f6f6gng37pKTSFZ1WzLGFW4ox6s_ozW2cs7xp1J5YdNjMtrWqNydnFlvA0FuAWWzMKR-WfEWFbuv904DXCR0qdCs1o2vj';
 
   static NotificationService? get instance {
-    if (_instance == null) {
+    if(_instance == null) {
       _instance = NotificationService._();
       return _instance;
     }
@@ -32,30 +36,37 @@ class NotificationService {
     _instance = NotificationService._();
   }
 
-
   Future<void> sendNotificationToDrivers(List<Bus> busNumbers) async {
-    // final List<String> driverDeviceTokens = [];
-    for (int i = 0; i < busNumbers.length; i++) {
+    for(int i = 0; i < busNumbers.length; i++) {
       print('Number: ${busNumbers[i].number}');
+      
       final buses = FirebaseFirestore.instance.collection('buses');
+      
       QuerySnapshot querySnapshot = await buses.get();
+      
       List<Map<String, dynamic>> dataList = querySnapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
-      for (int i = 0; i < dataList.length; i++) {
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+
+      for(int i = 0; i < dataList.length; i++) {
         print('getAllBusDriverDeviceTokens ${dataList[i]['number']}');
-        if (busNumbers
-            .map((bus) => bus.number)
-            .contains(dataList[i]['number'])) {
+        if(busNumbers.map((bus) => bus.number).contains(dataList[i]['number'])) {
           // print("getAllBusDriverDeviceTokens contains ${busNumbers[i].number}");
-          for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-            print(
-                'getAllBusDriverDeviceTokens ${dataList[i]['drivers_id'][j]}');
-            notificationSender(dataList[i]['drivers_id'][j]['device_token'],
+          for(int j = 0; j < dataList[i]['drivers_id'].length; j++) {
+            print('getAllBusDriverDeviceTokens ${dataList[i]['drivers_id'][j]}');
+            
+            final docRef = FirebaseFirestore.instance.collection("users").doc(dataList[i]['drivers_id'][j]);
+            docRef.get().then(
+              (DocumentSnapshot doc) {
+                final data = doc.data() as Map<String, dynamic>;
+                notificationSender(data['device_token'],
                 'Wait for me', 'One person waiting for you');
-            // send notification only if they're close
+              },
+              onError: (e) => print("Error getting document: $e"),
+            );
           }
-        } else {
+        } 
+        else {
           print("getAllBusDriverDeviceTokens not contains");
         }
       }
@@ -63,7 +74,10 @@ class NotificationService {
   }
 
   void notificationSender(
-      String deviceToken, String title, String bodyText) async {
+    String deviceToken, 
+    String title, 
+    String bodyText
+  ) async {
     print('-> sendNotification');
     print('-> sendNotification $deviceToken');
     print('-> sendNotification $title');
@@ -83,33 +97,37 @@ class NotificationService {
       'data': {'type': 'msj', 'id': ''}
     };
 
-    await http.post(Uri.parse('https://fcm.googleapis.com/fcm/send'),
-        body: jsonEncode(data),
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'Authorization': 'key=$cloudMessagingAPI'
-        }).then((value) {
-      if (kDebugMode) {
+    await http.post(
+      Uri.parse('https://fcm.googleapis.com/fcm/send'),
+      body: jsonEncode(data),
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'Authorization': 'key=$cloudMessagingAPI'
+      }
+    )
+    .then((value) {
+      if(kDebugMode) {
         print(value.body.toString());
       }
-    }).onError((error, stackTrace) {
-      if (kDebugMode) {
+    })
+    .onError((error, stackTrace) {
+      if(kDebugMode) {
         print(error);
       }
     });
   }
 
   void initLocalNotifications(
-      BuildContext context, RemoteMessage message) async {
-    var androidInitializationSettings =
-        const AndroidInitializationSettings('@mipmap/ic_launcher');
+    BuildContext context, 
+    RemoteMessage message
+  ) async {
+    var androidInitializationSettings =  const AndroidInitializationSettings('@mipmap/ic_launcher');
     var iosInitializationSettings = const DarwinInitializationSettings();
+    var initializationSetting = InitializationSettings(android: androidInitializationSettings, iOS: iosInitializationSettings);
 
-    var initializationSetting = InitializationSettings(
-        android: androidInitializationSettings, iOS: iosInitializationSettings);
-
-    await _flutterLocalNotificationsPlugin.initialize(initializationSetting,
-        onDidReceiveNotificationResponse: (payload) {
+    await _flutterLocalNotificationsPlugin.initialize(
+      initializationSetting,
+      onDidReceiveNotificationResponse: (payload) {
       handleMessage(context, message);
     });
   }
@@ -119,18 +137,18 @@ class NotificationService {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification!.android;
 
-      if (kDebugMode) {
+      if(kDebugMode) {
         print("notifications title:${notification!.title}");
         print("notifications body:${notification.body}");
         print('count:${android!.count}');
         print('data:${message.data.toString()}');
       }
 
-      if (Platform.isIOS) {
+      if(Platform.isIOS) {
         forgroundMessage();
       }
 
-      if (Platform.isAndroid) {
+      if(Platform.isAndroid) {
         initLocalNotifications(context, message);
         showNotification(message);
       }
@@ -148,17 +166,18 @@ class NotificationService {
       sound: true,
     );
 
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      if (kDebugMode) {
+    if(settings.authorizationStatus == AuthorizationStatus.authorized) {
+      if(kDebugMode) {
         print('user granted permission');
       }
-    } else if (settings.authorizationStatus ==
-        AuthorizationStatus.provisional) {
-      if (kDebugMode) {
+    } 
+    else if(settings.authorizationStatus == AuthorizationStatus.provisional) {
+      if(kDebugMode) {
         print('user granted provisional permission');
       }
-    } else {
-      if (kDebugMode) {
+    } 
+    else {
+      if(kDebugMode) {
         print('user denied permission');
       }
     }
@@ -174,7 +193,7 @@ class NotificationService {
     );
 
     AndroidNotificationDetails androidNotificationDetails =
-        AndroidNotificationDetails(
+      AndroidNotificationDetails(
       channel.id.toString(),
       channel.name.toString(),
       channelDescription: 'your channel description',
@@ -184,12 +203,8 @@ class NotificationService {
       ticker: 'ticker',
     );
 
-    const DarwinNotificationDetails darwinNotificationDetails =
-        DarwinNotificationDetails(
-            presentAlert: true, presentBadge: true, presentSound: true);
-
-    NotificationDetails notificationDetails = NotificationDetails(
-        android: androidNotificationDetails, iOS: darwinNotificationDetails);
+    const DarwinNotificationDetails darwinNotificationDetails = DarwinNotificationDetails(presentAlert: true, presentBadge: true, presentSound: true);
+    NotificationDetails notificationDetails = NotificationDetails(android: androidNotificationDetails, iOS: darwinNotificationDetails);
 
     Future.delayed(Duration.zero, () {
       _flutterLocalNotificationsPlugin.show(
@@ -215,13 +230,12 @@ class NotificationService {
     });
   }
 
-  //handle tap on notification when app is in background or terminated
+  // Handle tap on notification when app is in background or terminated
   Future<void> setupInteractMessage(BuildContext context) async {
-    // when app is terminated
-    RemoteMessage? initialMessage =
-        await FirebaseMessaging.instance.getInitialMessage();
+    // When app is terminated
+    RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
 
-    if (initialMessage != null) {
+    if(initialMessage != null) {
       handleMessage(context, initialMessage);
     }
 
@@ -232,17 +246,33 @@ class NotificationService {
   }
 
   void handleMessage(BuildContext context, RemoteMessage message) {
-    if (message.data['type'] == 'msj') {
+    if(message.data['type'] == 'msj') {
       print('Message data: ${message.data['id']}');
     }
   }
 
   Future forgroundMessage() async {
-    await FirebaseMessaging.instance
-        .setForegroundNotificationPresentationOptions(
+    await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
       alert: true,
       badge: true,
       sound: true,
     );
   }
+
+  Future<bool> addUserDevice(String userDeviceToken) async {
+    try {
+      final user = await AuthService.firebase().getCurrentUser();
+      if(user != null) {
+        final userRef = FirebaseFirestore.instance.collection("users").doc(user.id);
+        userRef.update({"device_token": userDeviceToken});
+        return true;
+      }
+    } 
+    catch(e) {
+      print("Error updating document: $e");
+    }
+
+    return false;
+  }
+
 }

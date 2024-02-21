@@ -6,7 +6,9 @@ import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/services/location_service.dart';
 
 class BusService {
+
   static BusService? _instance;
+
   FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   Future<String> getDeviceToken() async {
@@ -16,7 +18,7 @@ class BusService {
   }
 
   static BusService? get instance {
-    if (_instance == null) {
+    if(_instance == null) {
       _instance = BusService._();
       return _instance;
     }
@@ -31,45 +33,53 @@ class BusService {
 
   Future<bool> driverIsActive() async {
     final user = await AuthService.firebase().getCurrentUser();
+
     try {
       final buses = FirebaseFirestore.instance.collection('buses');
+
       QuerySnapshot querySnapshot = await buses.get();
+
       List<Map<String, dynamic>> dataList = querySnapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
-      for (int i = 0; i < dataList.length; i++) {
-        for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+
+      for(int i = 0; i < dataList.length; i++) {
+        for(int j = 0; j < dataList[i]['drivers_id'].length; j++) {
+          if(dataList[i]['drivers_id'][j] == user?.id) {
             return true;
           }
         }
       }
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error getDriverBusNumber: ${e.toString()}');
     }
+
     return false;
   }
 
   Future<void> assignBusNumber({required String number}) async {
     try {
       final user = await AuthService.firebase().getCurrentUser();
-      if (user != null) {
+      
+      if(user != null) {
         late final String busId;
+
         await FirebaseFirestore.instance
-            .collection('buses')
-            .where("number", isEqualTo: number)
-            .get()
-            .then((QuerySnapshot snapshot) {
-          busId = snapshot.docs[0].id;
-          print(busId);
-        });
+          .collection('buses')
+          .where("number", isEqualTo: number)
+          .get()
+          .then((QuerySnapshot snapshot) {
+            busId = snapshot.docs[0].id;
+            print(busId);
+          });
+
         await FirebaseFirestore.instance.collection('buses').doc(busId).update({
-          "drivers_id": FieldValue.arrayUnion([
-            {"id": user.id, "device_token": await getDeviceToken()}
-          ])
+          "drivers_id": FieldValue.arrayUnion([user.id])
         });
       }
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error assignBusNumber: ${e.toString()}');
     }
   }
@@ -82,15 +92,19 @@ class BusService {
 
   Future<void> removeDriverFromBuses() async {
     final user = await AuthService.firebase().getCurrentUser();
+
     try {
       final buses = FirebaseFirestore.instance.collection('buses');
+
       QuerySnapshot querySnapshot = await buses.get();
+      
       List<Map<String, dynamic>> dataList = querySnapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
-      for (int i = 0; i < dataList.length; i++) {
-        for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+
+      for(int i = 0; i < dataList.length; i++) {
+        for(int j = 0; j < dataList[i]['drivers_id'].length; j++) {
+          if(dataList[i]['drivers_id'][j] == user?.id) {
             await buses.doc(dataList[i]['id']).update({
               "drivers_id": FieldValue.arrayRemove([
                 dataList[i]['drivers_id'][j],
@@ -99,7 +113,8 @@ class BusService {
           }
         }
       }
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error removeDriverFromBuses : ${e.toString()}');
     }
   }
@@ -111,22 +126,27 @@ class BusService {
 
   Future<Bus?> getDriverBusNumber() async {
     final user = await AuthService.firebase().getCurrentUser();
+
     try {
       final buses = FirebaseFirestore.instance.collection('buses');
       late final driverBusNumber;
+      
       QuerySnapshot querySnapshot = await buses.get();
+      
       List<Map<String, dynamic>> dataList = querySnapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
-      for (int i = 0; i < dataList.length; i++) {
-        for (int j = 0; j < dataList[i]['drivers_id'].length; j++) {
-          if (dataList[i]['drivers_id'][j]['id'] == user?.id) {
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
+      
+      for(int i = 0; i < dataList.length; i++) {
+        for(int j = 0; j < dataList[i]['drivers_id'].length; j++) {
+          if(dataList[i]['drivers_id'][j] == user?.id) {
             driverBusNumber = dataList[i]['number'];
             return Bus(number: driverBusNumber);
           }
         }
       }
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error getDriverBusNumber: ${e.toString()}');
     }
     return null;
@@ -134,11 +154,10 @@ class BusService {
 
   static Stream<List<Bus>> getBuses() {
     return FirebaseFirestore.instance
-        .collection("buses")
-        .orderBy("number_int")
-        .snapshots()
-        .map((snapshot) =>
-            snapshot.docs.map((doc) => Bus.fromJson(doc.data())).toList());
+      .collection("buses")
+      .orderBy("number_int")
+      .snapshots()
+      .map((snapshot) => snapshot.docs.map((doc) => Bus.fromJson(doc.data())).toList());
   }
 
   Future<bool> addUser(List<Bus> buses) async {
@@ -146,103 +165,122 @@ class BusService {
       final user = await AuthService.firebase().getCurrentUser();
       LatLng currentLocation = await LocationService.requestLocation();
 
-      for (var bus in buses) {
+      for(var bus in buses) {
         FirebaseFirestore.instance.collection("buses").doc(bus.id).update({
           "users_info": FieldValue.arrayUnion([
             {
               "id": user?.id,
               "latitude": currentLocation.latitude,
               "longitude": currentLocation.longitude,
-              "device_token":  await getDeviceToken(),
-              "notified" : false
+              "device_token": await getDeviceToken(),
+              "notified": false
             }
           ])
         });
       }
+
       return true;
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error: ${e.toString()}');
     }
+
     return false;
   }
 
   Future<bool> removeUser() async {
     final user = await AuthService.firebase().getCurrentUser();
+
     try {
       final buses = FirebaseFirestore.instance.collection("buses");
+
       // Get the documents from the collection
       QuerySnapshot querySnapshot = await buses.get();
 
       // Extract data from documents
       List<Map<String, dynamic>> dataList = querySnapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
 
-      for (int i = 0; i < dataList.length; i++) {
-        for (int j = 0; j < dataList[i]['users_info'].length; j++) {
-          if (dataList[i]['users_info'][j]['id'] == user?.id) {
+      for(int i = 0; i < dataList.length; i++) {
+        for(int j = 0; j < dataList[i]['users_info'].length; j++) {
+          if(dataList[i]['users_info'][j]['id'] == user?.id) {
             buses.doc(dataList[i]['id']).update({
               "users_info": FieldValue.arrayRemove([
                 {
                   "id": dataList[i]['users_info'][j]['id'],
                   "latitude": dataList[i]['users_info'][j]['latitude'],
                   "longitude": dataList[i]['users_info'][j]['longitude'],
-                  "device_token":  dataList[i]['users_info'][j]['device_token'],
-                  "notified" : dataList[i]['users_info'][j]['notified'],
+                  "notified": dataList[i]['users_info'][j]['notified'],
+                  "device_token": dataList[i]['users_info'][j]['device_token'],
                 }
               ])
             });
           }
         }
       }
+
       return true;
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error: ${e.toString()}');
     }
+
     return false;
   }
 
   Future<bool> userNotified(String userDeviceToken) async {
     try {
       final buses = FirebaseFirestore.instance.collection("buses");
+
       // Get the documents from the collection
       QuerySnapshot querySnapshot = await buses.get();
 
       // Extract data from documents
       List<Map<String, dynamic>> dataList = querySnapshot.docs
-          .map((doc) => doc.data() as Map<String, dynamic>)
-          .toList();
+        .map((doc) => doc.data() as Map<String, dynamic>)
+        .toList();
 
-      for (int i = 0; i < dataList.length; i++) {
-        for (int j = 0; j < dataList[i]['users_info'].length; j++) {
-          if (dataList[i]['users_info'][j]['device_token'] == userDeviceToken) {
-            buses.doc(dataList[i]['id']).update({
-              "users_info": FieldValue.arrayUnion([
-                {
-                  "id": dataList[i]['users_info'][j]['id'],
-                  "latitude": dataList[i]['users_info'][j]['latitude'],
-                  "longitude": dataList[i]['users_info'][j]['longitude'],
-                  "device_token":  dataList[i]['users_info'][j]['device_token'],
-                  "notified" : true,
-                }
-              ])
-            });
+      for(int i = 0; i < dataList.length; i++) {
+        for(int j = 0; j < dataList[i]['users_info'].length; j++) {
+          if(dataList[i]['users_info'][j]['device_token'] == userDeviceToken) {
+            if(dataList[i]['users_info'][j]['notified'] == false) {
+              buses.doc(dataList[i]['id']).update({
+                "users_info": FieldValue.arrayUnion([
+                  {
+                    "id": dataList[i]['users_info'][j]['id'],
+                    "latitude": dataList[i]['users_info'][j]['latitude'],
+                    "longitude": dataList[i]['users_info'][j]['longitude'],
+                    "device_token": dataList[i]['users_info'][j]
+                        ['device_token'],
+                    "notified": true,
+                  }
+                ])
+              });
+              return true;
+            } 
+            else {
+              return false;
+            }
           }
         }
       }
-      return true;
-    } catch (e) {
+    } 
+    catch (e) {
       print('Error: ${e.toString()}');
     }
+
     return false;
   }
 
   Future<void> setNewToken() async {
     final bool isActive = await driverIsActive();
-    if (isActive) {
+
+    if(isActive) {
       final busNumber = await getDriverBusNumber();
       print('token busnumber1: ${busNumber!.number}');
       await changeBusNumber(number: busNumber.number);
     }
   }
+
 }

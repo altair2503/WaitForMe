@@ -80,10 +80,10 @@ class _CitiesPageState extends State<CitiesPage> {
                       )
                     ),
                   )
-              ],
+              ]
             )
-          ],
-        ),
+          ]
+        )
       )
     );
   }

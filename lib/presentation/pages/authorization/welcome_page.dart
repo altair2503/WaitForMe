@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:wait_for_me/constants/colors.dart';
 import 'package:wait_for_me/constants/routes.dart';
+
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -14,144 +16,109 @@ class _WelcomePageState extends State<WelcomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Row(children: [
-            Image.asset('assets/images/logo.JPEG', scale: 80),
-            const Text(
-              "Wait for me",
-              style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Montserrat',
-                  fontWeight: FontWeight.w700,
-                  color: logoColor),
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage('assets/images/backwelcome.png'),
+                fit: BoxFit.cover
+              )
             )
-          ]),
-        ),
-        body: Center(
+          ),
+          SafeArea(
+            minimum: const EdgeInsets.fromLTRB(15, 150, 15, 0),
             child: Column(
-          children: [
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context)
-                      .pushNamedAndRemoveUntil(registerUserRoute, (route) => false);
-              },
-              child:
-            Container(
-              margin: const EdgeInsets.only(top: 160.0, bottom : 16.0),
-              padding: const EdgeInsets.all(16.0),
-              width: 370,
-              decoration: BoxDecoration(
-                color: mainColor,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade400,
-                    blurRadius: 5,
-                    offset: const Offset(3, 3),
-                  )
-                ],
-              ),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            margin: const EdgeInsets.only(bottom: 8.0),
-                            width: 250,
-                            child: const Text(
-                              "I need help with transportation",
-                              style: TextStyle(
-                                  fontSize: 24,
-                                  fontFamily: 'Montserrat',
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white),
-                            )),
-                        const Text(
-                          "For people with disabilities",
-                          style: TextStyle(
-                              fontSize: 14,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Image.asset('assets/icons/icon-profile-fill.png',
-                        scale: 1.5)
-                  ]),
-            )),
-
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context)
-                      .pushNamedAndRemoveUntil(registerDriverRoute, (route) => false);
-              },
-              child:
-            Container(
-              margin: const EdgeInsets.all(16.0),
-              padding: const EdgeInsets.all(16.0),
-              width: 370,
-              decoration: BoxDecoration(
-                color: mainColor,
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.shade400,
-                    blurRadius: 5,
-                    offset: const Offset(3, 3),
-                  )
-                ],
-              ),
-              child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "I'm bus driver",
-                          style: TextStyle(
-                              fontSize: 24,
-                              fontFamily: 'Montserrat',
-                              fontWeight: FontWeight.w500,
-                              color: Colors.white),
-                        ),
-                      ],
-                    ),
-                    Image.asset('assets/icons/solid_bus.png', scale: 1.5)
-                  ]),
-            )),
-
-            GestureDetector(
-              onTap: () {
-                Navigator.of(context)
-                      .pushNamedAndRemoveUntil(loginRoute, (route) => false);
-              },
-              child:
-            Container(
-              margin: const EdgeInsets.all(12.0),
-              padding: const EdgeInsets.all(12.0),
-              decoration: BoxDecoration(
-                color:Colors.white,
-                borderRadius: BorderRadius.circular(30),
-                border: Border.all(
-                  color: mainColor, // Set your desired border color here
-                  width: 1, // Set the border width (optional)
+              children: [
+                const Image(
+                  image: AssetImage('assets/images/logowelcome.png'),
+                  width: 240,
                 ),
-                
-              ),
-              child: const Text(
-                "Or login here",
-                style: TextStyle(
-                fontSize: 17,
-                fontFamily: 'Montserrat',
-                fontWeight: FontWeight.w500,
-                color: mainColor),
-              ),
-            ))
-          ],
-        )));
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).pushNamedAndRemoveUntil(registerUserRoute, (route) => false);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 60.0, bottom : 15.0),
+                    padding: const EdgeInsets.fromLTRB(25, 16, 20, 16),
+                    decoration: BoxDecoration(
+                      color: mainColor.withOpacity(.8),
+                      borderRadius: BorderRadius.circular(23),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Container(
+                              width: 205,
+                              margin: const EdgeInsets.only(bottom: 6.0),
+                              child: const Text(
+                                "I need help with transportation",
+                                style: TextStyle(fontSize: 24, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: Colors.white, height: 1.35, letterSpacing: .8),
+                              )
+                            ),
+                            const Text(
+                              "For people with disabilities",
+                              style: TextStyle(fontSize: 14, fontFamily: 'Poppins', fontWeight: FontWeight.w400, color: Color.fromRGBO(255, 255, 255, .95), letterSpacing: .8),
+                            ),
+                          ],
+                        ),
+                        Image.asset('assets/icons/icon-profile-fill.png', scale: 1.2)
+                      ]
+                    ),
+                  )
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                    .pushNamedAndRemoveUntil(registerDriverRoute, (route) => false);
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 21),
+                    decoration: BoxDecoration(
+                      color: const Color.fromRGBO(147, 167, 178, 1),
+                      borderRadius: BorderRadius.circular(20)
+                    ),
+                    child: const Text(
+                      "I'm bus driver",
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w500,
+                          color: Colors.white),
+                    )
+                  )
+                ),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.of(context)
+                    .pushNamedAndRemoveUntil(loginRoute, (route) => false);
+                  },
+                  child: Container(
+                    margin: const EdgeInsets.only(top: 55),
+                    padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 30),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: Colors.white.withOpacity(.7), width: 1)
+                    ),
+                    child: const Text(
+                      "Or login here",
+                      style: TextStyle(fontSize: 18.5, fontFamily: 'Poppins', fontWeight: FontWeight.w500, color: Colors.white),
+                    ),
+                  )
+                )
+              ],
+            )
+          )
+        ]
+      )
+    );
   }
 }

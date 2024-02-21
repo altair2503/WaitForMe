@@ -1,6 +1,7 @@
 import 'package:flutter_tts/flutter_tts.dart';
 
 class TtsService {
+
   static TtsService? _instance;
   final FlutterTts flutterTts = FlutterTts();
 
@@ -10,10 +11,11 @@ class TtsService {
   }
 
   static TtsService? get instance {
-    if (_instance == null) {
+    if(_instance == null) {
       _instance = TtsService._();
       return _instance;
     }
+
     return _instance;
   }
 
@@ -30,4 +32,5 @@ class TtsService {
   void driverSpeech(String remainingDistance) {
     flutterTts.speak("A person with disabilities is waiting for you $remainingDistance meters away");
   }
+
 }

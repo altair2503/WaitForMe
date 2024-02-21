@@ -1,11 +1,11 @@
-
 class Bus {
+
   String id;
   String number;
   double numberInt;
+
   List<dynamic> driversId;
   List<dynamic> usersInfo;
-
 
   Bus({
     this.id = "",
@@ -32,9 +32,10 @@ class Bus {
   );
 
   @override
-  bool operator==(Object other) =>
-      other is Bus && id == other.id && number == other.number;
+  bool operator==(Object other) => 
+    other is Bus && id == other.id && number == other.number;
 
   @override
-    int get hashCode => Object.hash(id, number);
+  int get hashCode => Object.hash(id, number);
+
 }

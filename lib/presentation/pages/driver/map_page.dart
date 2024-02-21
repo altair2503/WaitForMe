@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ionicons/ionicons.dart';
+
 import 'package:wait_for_me/constants/colors.dart';
 import 'package:wait_for_me/models/bus_model.dart';
+
 import 'package:wait_for_me/presentation/pages/driver/google_map_page.dart';
+
 import 'package:wait_for_me/services/bus_service.dart';
 
 
@@ -56,7 +59,6 @@ class _MapPageState extends State<MapPage> {
                   );
                 } 
                 else {
-                  // print("Number: ${driverBusNumber}");
                   return const SizedBox(
                     height: 20,
                     width: 20,

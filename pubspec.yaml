@@ -85,6 +85,9 @@ flutter:
     - assets/images/driver.png
     - assets/images/logo.JPEG
     - assets/images/driver_profile.png
+    - assets/images/backwelcome.png
+    - assets/images/logowelcome.png
+    - assets/images/email.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -113,6 +116,18 @@ flutter:
         - asset: assets/fonts/Montserrat-Medium.ttf
           weight: 500
         - asset: assets/fonts/Montserrat-ExtraBold.ttf
+          weight: 700
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/Poppins-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Poppins-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Poppins-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Poppins-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
   #
   # For details regarding fonts from package dependencies,
