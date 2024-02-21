@@ -72,17 +72,17 @@ Our application actively contributes to the implementation of two key United Nat
 ### 1. PWD Part
 | Main Screen  | Overview  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainPage.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | **PWD** part consists of 4 screens. All processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Select the number of buses you need and click `Notify`. <br/> 2. **Notifying Page:** Drivers are notified here. <br/> 3. **Waiting Page:** Here you are waiting for the driver, after entering the bus, press `"I'm in bus"`. <br/> 4. **City Selection Page:** Here you can choose a city. <br/><br/> **[Note]** <br/> In the process of notifying and waiting for drivers, you can opt out by clicking `Cancel`.  |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainPage.png" width="194">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif" width="194">  | **PWD** part consists of 4 screens. All processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Select the number of buses you need and click `Notify`. <br/> 2. **Notifying Page:** Drivers are notified here. <br/> 3. **Waiting Page:** Here you are waiting for the driver, after entering the bus, press `"I'm in bus"`. <br/> 4. **City Selection Page:** Here you can choose a city. <br/><br/> **[Note]** <br/> In the process of notifying and waiting for drivers, you can opt out by clicking `Cancel`.  |
 
 ### 2. Driver Part
 | Main Screen  | Bus Changing  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMainPage.png)  | ![Bus Changing](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | **Driver** part consists of 2 screens. Processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Сan see those waiting on the map. The distance to the nearest is displayed. <br/> 2. **Profile Page:** Here the driver can change the number of his bus, or finish the shift.  |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMainPage.png" width="194">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif" width="194">  | **Driver** part consists of 2 screens. Processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Сan see those waiting on the map. The distance to the nearest is displayed. <br/> 2. **Profile Page:** Here the driver can change the number of his bus, or finish the shift.  |
 
 ### [Additional] Push Notifications
 | PWD Screen  | Driver Screen  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Push Pwd](https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifPwd.gif)  | ![Push Drvier](https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifDriver.gif)  | Our processes are equipped with `Push Notifications`, users receive them: <br/><br/> **[PWD]** <br/> 1. When the driver pulls up to the passenger. <br/><br/> **[Driver]** <br/> 1. When the PWD notifies drivers. <br/> 2. When the passenger entered the transport **or** canceled the trip.  |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifPwd.gif" width="194">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifDriver.gif" width="194">  | Our processes are equipped with `Push Notifications`, users receive them: <br/><br/> **[PWD]** <br/> 1. When the driver pulls up to the passenger. <br/><br/> **[Driver]** <br/> 1. When the PWD notifies drivers. <br/> 2. When the passenger entered the transport **or** canceled the trip.  |
 
 ---
 
