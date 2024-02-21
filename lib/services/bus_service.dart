@@ -246,6 +246,18 @@ class BusService {
           if(dataList[i]['users_info'][j]['device_token'] == userDeviceToken) {
             if(dataList[i]['users_info'][j]['notified'] == false) {
               buses.doc(dataList[i]['id']).update({
+                "users_info": FieldValue.arrayRemove([
+                  {
+                    "id": dataList[i]['users_info'][j]['id'],
+                    "latitude": dataList[i]['users_info'][j]['latitude'],
+                    "longitude": dataList[i]['users_info'][j]['longitude'],
+                    "device_token": dataList[i]['users_info'][j] ['device_token'],
+                    "notified": dataList[i]['users_info'][j]['notified']
+                  }
+                ])
+              });
+
+              buses.doc(dataList[i]['id']).update({
                 "users_info": FieldValue.arrayUnion([
                   {
                     "id": dataList[i]['users_info'][j]['id'],
