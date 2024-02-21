@@ -9,16 +9,19 @@ TABLE OF CONTENT
 ----------------
 <ol>
   <li><a href="#un's-sustainable-development-goals-and-targets">🎯 UN's Sustainable Development Goals And Targets</a></li>
-  <li><a href="#technologies">Technologies</a></li>
-  <li><a href="#core-functionalities">Core Functionalities</a></li>
-  <li><a href="#distribution">Distribution</a></li>
+  <li><a href="#project-demo-video">🎥 Demo Video</a></li>
+  <li><a href="#used-technologies">🧰 Used Technologies</a></li>
+  <li><a href="#project-architecture">🛠️ Project Architecture</a></li>
+  <li><a href="#project-features">📱 Project Features</a></li>
+  <li><a href="#importing">📤 Getting Started</a></li>
+  <li><a href="#developers">👨🏻‍💻 Developers</a></li>
 </ol>
 
 ---
 
+<div id="un's-sustainable-development-goals-and-targets"></div>
 🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
 -----------------------------------------------
-<div id="un's-sustainable-development-goals-and-targets"></div>
 Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
 
 ### SDG 10: Reduced Inequalities (Target 10.2)
@@ -31,6 +34,7 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
+<div id="project-demo-video"></div>
 🎥 PROJECT DEMO VIDEO
 ------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
@@ -38,6 +42,7 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
+<div id=used-technologies"></div>
 🧰 USED TECHNOLOGIES
 -----------------
 #### To create our project, we used technologies such as
@@ -47,12 +52,14 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
+<div id="projetc-architecture"></div>
 🛠️ PROJECT ARCHITECTURE
 ------------------
 ![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/ProjectArchitecture.png)
 
 ---
 
+<div id="project-features"></div>
 📱 PROJECT FEATURES
 ----------------
 ### 1. PWD Part
@@ -67,6 +74,7 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
+<div id="importing"></div>
 📝 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
@@ -126,6 +134,7 @@ After completing all the steps described in the instructions, connect your `mobi
 
 ---
 
+<div id="developers"></div>
 👨🏻‍💻 DEVELOPED BY
 --------------------
 
