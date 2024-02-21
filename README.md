@@ -5,8 +5,24 @@
 
 ---
 
+TABLE OF CONTENT
+----------------
+<ol>
+  <li><a href="#un's-sustainable-development-goals-and-targets">🎯 UN's SDG And Targets</a></li>
+  <li><a href="#project-demo-video">🎥 Demo Video</a></li>
+  <li><a href="#used-technologies">🧰 Used Technologies</a></li>
+  <li><a href="#project-architecture">🛠️ Project Architecture</a></li>
+  <li><a href="#project-features">📱 Project Features</a></li>
+  <li><a href="#importing">📤 Getting Started</a></li>
+  <li><a href="#developers">👨🏻‍💻 Developers</a></li>
+</ol>
+
+---
+
+<div id="un's-sustainable-development-goals-and-targets"></div>
+
 🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
-------------------
+-----------------------------------------------
 Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
 
 ### SDG 10: Reduced Inequalities (Target 10.2)
@@ -19,12 +35,16 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
+<div id="project-demo-video"></div>
+
 🎥 PROJECT DEMO VIDEO
 ------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
 > Video Link: soon...
 
 ---
+
+<div id="used-technologies"></div>
 
 🧰 USED TECHNOLOGIES
 -----------------
@@ -35,11 +55,15 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
+<div id="projetc-architecture"></div>
+
 🛠️ PROJECT ARCHITECTURE
 ------------------
 ![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/ProjectArchitecture.png)
 
 ---
+
+<div id="project-features"></div>
 
 📱 PROJECT FEATURES
 ----------------
@@ -54,6 +78,8 @@ Our application actively contributes to the implementation of two key United Nat
 | ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMainPage.png)  | ![Overview](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | **Driver** part consists of 2 screens. Processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Сan see those waiting on the map. The distance to the nearest is displayed. <br/> 2. **Profile Page:** Here the driver can change the number of his bus, or finish the shift.  |
 
 ---
+
+<div id="importing"></div>
 
 📝 PREPARING FOR IMPORTING
 -----------------------
@@ -113,6 +139,8 @@ After completing all the steps described in the instructions, connect your `mobi
       flutter run
 
 ---
+
+<div id="developers"></div>
 
 👨🏻‍💻 DEVELOPED BY
 --------------------
