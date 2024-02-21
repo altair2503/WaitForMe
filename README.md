@@ -1,25 +1,47 @@
 # WaitForMe - Google Solution Challange 2024
 
 ![Banner](https://github.com/altair2503/WaitForMe/blob/main/readme/Banner.png)
+> WaitForMe is an application dedicated to bring people with disabilities and public transport drivers closer together. Our platform effectively addresses the challenges encountered by people with disabilities at bus stops, eradicating issues such as indifference, prolonged wait times, and unnecessary stress. By ensuring accessibility for all within urban mobility, WaitForMe is  driving positive change and making the world better for everyone.
 
 ---
 
-PROJECT DEMO VIDEO
+🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
+------------------
+Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
+
+### SDG 10: Reduced Inequalities (Target 10.2)
+![SDG10](https://github.com/altair2503/WaitForMe/blob/main/readme/SDG10.png)
+> *Target 10.2* Promote Universal Social, Economic and Political Inclusion - empower and promote the social, economic and political inclusion of all, irrespective of age, sex, disability, race, ethnicity, origin, religion or economic or other status.
+
+### SDG 11: Sustainable Cities and Communities (Target 11.2)
+![SDG11](https://github.com/altair2503/WaitForMe/blob/main/readme/SDG11.png)
+> *Target 11.2* Affordable and Sustainable Transport Systems - provide access to safe, affordable, accessible and sustainable transport systems for all, improving road safety, notably by expanding public transport, with special attention to the needs of those in vulnerable situations, women, children, persons with disabilities and older persons.
+
+---
+
+🎥 PROJECT DEMO VIDEO
 ------------------
 ![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
+> Video Link: soon...
 
 ---
 
-USED TECHNOLOGIES
+🧰 USED TECHNOLOGIES
 -----------------
 #### To create our project, we used technologies such as
-* Flutter⠀—⠀Firebase⠀—⠀Google Cloud⠀—⠀Dart⠀—⠀Google Maps
+* Flutter — Firebase — Google Cloud — Dart — Google Maps
   
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
 ---
 
-PROJECT FEATURES
+🛠️ PROJECT ARCHITECTURE
+------------------
+![Architecture](https://github.com/altair2503/WaitForMe/blob/main/readme/ProjectArchitecture.png)
+
+---
+
+📱 PROJECT FEATURES
 ----------------
 ### 1. PWD Part
 | Main Screen  | Overview  | Overview  |
@@ -33,14 +55,14 @@ PROJECT FEATURES
 
 ---
 
-PREPARING FOR IMPORTING
+📝 PREPARING FOR IMPORTING
 -----------------------
 #### To start importing a project, you need to:
 [Flutter](https://docs.flutter.dev/get-started/install) version 3.19.0 [min] and more.
 
 This is the official documentation of Flutter, **follow the instructions** in this article to install it.
 
-IMPORTING
+📤 IMPORTING
 ---------
 Step-by-step instructions for importing the `WaitForMe` project.
 
@@ -84,7 +106,7 @@ To do this, you need to enter the following command:
 
 ---
 
-PROJECT START
+▶️ PROJECT START
 -------------
 After completing all the steps described in the instructions, connect your `mobile device` or `emulator`, and launch the project by typing the following command in the command prompt:
 
@@ -92,7 +114,7 @@ After completing all the steps described in the instructions, connect your `mobi
 
 ---
 
-PROJECT DEVELOPED BY
+👨🏻‍💻 DEVELOPED BY
 --------------------
 
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
