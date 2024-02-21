@@ -155,7 +155,7 @@ After completing all the steps described in the instructions, connect your `mobi
 | [Kapparova Aknur](https://github.com/aknurkappar)  | [Amen Azat](https://github.com/azikkw)  | [Kazieva Dina](https://github.com/KDindin)  | [Kabdrakhmanov Altair](https://github.com/altair2503)  |
 | :-----------: | :-----------: | :-----------: | :-----------: |
 | Front-End Developer  | Front-End Developer  | Back-End Developer  | Back-End Developer  |
-| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/AknurPhoto.jpg">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/Dina.jpg">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg">  |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/AknurPhoto.jpg" height="185">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/AzatPhoto.jpg" height="185">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/Dina.jpg" height="185">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/AltairPhoto.jpg" height="185">  |
 | [Aknur Linkedin](https://www.linkedin.com/in/aknurkapparova/)  | [Azat Linkedin](https://www.linkedin.com/in/azikkw/)  | [Dina Linkedin](https://www.linkedin.com/in/dina-kaziyeva-3565622b5/)  | [Altair Linkedin](https://www.linkedin.com/in/kabdrakhmanov/)  |
 
 ---
