@@ -25,7 +25,6 @@ class PwdHomePage extends StatefulWidget {
 }
 
 class _PwdHomePageState extends State<PwdHomePage> {
-
   List<Bus> selectedBusNumbers = [];
 
   @override
@@ -39,11 +38,7 @@ class _PwdHomePageState extends State<PwdHomePage> {
     NotificationService.instance?.isTokenRefresh();
 
     NotificationService.instance?.getDeviceToken().then((value) {
-      if(kDebugMode) {
-        print('device token');
-        print(value);
-        NotificationService.instance?.addUserDevice(value);
-      }
+      NotificationService.instance?.addUserDevice(value);
     });
 
     TtsService.instance?.homeSpeechForPWD();

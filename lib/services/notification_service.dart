@@ -36,7 +36,7 @@ class NotificationService {
     _instance = NotificationService._();
   }
 
-  Future<void> sendNotificationToDrivers(List<Bus> busNumbers) async {
+  Future<void> sendNotificationToDrivers(List<Bus> busNumbers, String text) async {
     for(int i = 0; i < busNumbers.length; i++) {
       print('Number: ${busNumbers[i].number}');
       
@@ -60,7 +60,7 @@ class NotificationService {
               (DocumentSnapshot doc) {
                 final data = doc.data() as Map<String, dynamic>;
                 notificationSender(data['device_token'],
-                'Wait for me', 'One person waiting for you');
+                'Wait for me', text);
               },
               onError: (e) => print("Error getting document: $e"),
             );

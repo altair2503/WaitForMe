@@ -34,7 +34,7 @@ class _NotifyingPageState extends State<NotifyingPage> {
 
   void makeNotify() async {
     BusService.instance?.addUser(selectedBusNumbers).then((value) async => {
-      await NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers),
+      await NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers, "Passenger is waiting for you"),
         Future
         .delayed(const Duration(milliseconds: 7000))
         .then((value) => setState(() {
@@ -94,7 +94,10 @@ class _NotifyingPageState extends State<NotifyingPage> {
                   children: [
                     if(found) const Image(image: AssetImage('assets/icons/driver.gif.webp'), width: 300),
                     if(found) const SizedBox(height: 18),
-                    if(found) const Text('Drivers have been notified, expect.', style: TextStyle(fontSize: 18)),
+                    if(found) Text(
+                      'Drivers ${selectedBusNumbers.toString().substring(1, selectedBusNumbers.toString().length - 1)} have been notified, expect.', 
+                      style: const TextStyle(fontSize: 18)
+                    ),
                     if(found) const Divider(height: 40, color: Color.fromRGBO(0, 0, 0, .1)),
                     if(found) const SizedBox(height: 10),
                     if(!found)
@@ -120,6 +123,7 @@ class _NotifyingPageState extends State<NotifyingPage> {
                             child: TextButton(
                             onPressed: () => {
                               BusService.instance?.removeUser(),
+                              NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers, "Passenger is on the bus"),
                               Navigator.pop(context)
                             },
                             style: TextButton.styleFrom(
@@ -128,7 +132,7 @@ class _NotifyingPageState extends State<NotifyingPage> {
                               padding: const EdgeInsets.symmetric(vertical: 16)
                             ),
                             child: const Text(
-                              "I'm in bus",
+                              "I'm on bus",
                               style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white)
                             ),
                           )
@@ -138,6 +142,7 @@ class _NotifyingPageState extends State<NotifyingPage> {
                           child: TextButton(
                             onPressed: () => {
                               BusService.instance?.removeUser(),
+                              NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers, "Passenger canceled the request"),
                               Navigator.pop(context)
                             },
                             style: TextButton.styleFrom(

@@ -75,11 +75,7 @@ class _DriverNavigationPageState extends State<DriverNavigationPage> {
     NotificationService.instance?.isTokenRefresh();
 
     NotificationService.instance?.getDeviceToken().then((value) {
-      if(kDebugMode) {
-        print('device token');
-        print(value);
         NotificationService.instance?.addUserDevice(value);
-      }
     });
 
     BusService.instance?.setNewToken();

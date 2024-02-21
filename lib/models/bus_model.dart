@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this
+
 class Bus {
 
   String id;
@@ -37,5 +39,10 @@ class Bus {
 
   @override
   int get hashCode => Object.hash(id, number);
+
+  @override
+  String toString() {
+    return this.number;
+  }
 
 }
