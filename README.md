@@ -8,7 +8,7 @@
 TABLE OF CONTENT
 ----------------
 <ol>
-  <li><a href="#un-sustainable-development-goals-and-targets">🎯 UN's Sustainable Development Goals And Targets</a></li>
+  <li><a href="#un's-sustainable-development-goals-and-targets">🎯 UN's Sustainable Development Goals And Targets</a></li>
   <li><a href="#technologies">Technologies</a></li>
   <li><a href="#core-functionalities">Core Functionalities</a></li>
   <li><a href="#distribution">Distribution</a></li>
@@ -16,7 +16,8 @@ TABLE OF CONTENT
 
 ---
 
-## 🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
+🎯 UN'S SUSTAINABLE DEVELOPMENT GOALS & TARGETS
+-----------------------------------------------
 Our application actively contributes to the implementation of two key United Nations Sustainable Development Goals:
 
 ### SDG 10: Reduced Inequalities (Target 10.2)
