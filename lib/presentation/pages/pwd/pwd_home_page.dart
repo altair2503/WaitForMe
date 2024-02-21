@@ -1,7 +1,6 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:wait_for_me/constants/routes.dart';
 import 'package:wait_for_me/dialogs/logout_dialog.dart';

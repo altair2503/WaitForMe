@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:location/location.dart';
 import 'package:ionicons/ionicons.dart';
