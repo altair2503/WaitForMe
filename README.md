@@ -44,7 +44,7 @@ Our application actively contributes to the implementation of two key United Nat
 
 ---
 
-<div id=used-technologies"></div>
+<div id="used-technologies"></div>
 
 🧰 USED TECHNOLOGIES
 -----------------
