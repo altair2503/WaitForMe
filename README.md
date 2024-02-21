@@ -1,5 +1,7 @@
 # WaitForMe - Google Solution Challange 2024
 
+<div id="top"></div>
+
 ![Banner](https://github.com/altair2503/WaitForMe/blob/main/readme/Banner.png)
 > WaitForMe is an application dedicated to bring people with disabilities and public transport drivers closer together. Our platform effectively addresses the challenges encountered by people with disabilities at bus stops, eradicating issues such as indifference, prolonged wait times, and unnecessary stress. By ensuring accessibility for all within urban mobility, WaitForMe is  driving positive change and making the world better for everyone.
 
@@ -153,4 +155,4 @@ After completing all the steps described in the instructions, connect your `mobi
 
 ---
 
-<p align="center"><li><a href="#developers">⬆️ To the top</a></li></p>
+<p align="center"><a href="#top">⬆️ To the top</a></p>
