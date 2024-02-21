@@ -77,12 +77,12 @@ Our application actively contributes to the implementation of two key United Nat
 ### 2. Driver Part
 | Main Screen  | Bus Changing  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMainPage.png)  | ![Bus Changing]("https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | **Driver** part consists of 2 screens. Processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Сan see those waiting on the map. The distance to the nearest is displayed. <br/> 2. **Profile Page:** Here the driver can change the number of his bus, or finish the shift.  |
+| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverMainPage.png)  | ![Bus Changing](https://github.com/altair2503/WaitForMe/blob/main/readme/DriverUI.gif)  | **Driver** part consists of 2 screens. Processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Сan see those waiting on the map. The distance to the nearest is displayed. <br/> 2. **Profile Page:** Here the driver can change the number of his bus, or finish the shift.  |
 
 ### [Additional] Push Notifications
 | PWD Screen  | Driver Screen  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifPwd.gif" width="194">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifDriver.gif" width="194">  | Our processes are equipped with `Push Notifications`, users receive them: <br/><br/> **[PWD]** <br/> 1. When the driver pulls up to the passenger. <br/><br/> **[Driver]** <br/> 1. When the PWD notifies drivers. <br/> 2. When the passenger entered the transport **or** canceled the trip.  |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifPwd.gif" width="200">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifDriver.gif" width="200">  | Our processes are equipped with `Push Notifications`, users receive them: <br/><br/> **[PWD]** <br/> 1. When the driver pulls up to the passenger. <br/><br/> **[Driver]** <br/> 1. When the PWD notifies drivers. <br/> 2. When the passenger entered the transport **or** canceled the trip.  |
 
 ---
 
