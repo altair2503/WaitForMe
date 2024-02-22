@@ -72,7 +72,7 @@ Our application actively contributes to the implementation of two key United Nat
 ### 1. PWD Part
 | Main Screen  | Notifying Drivers  | Overview  |
 | :-----------: | :-----------: | ------------- |
-| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainPage.png)  | ![Notifying Drivers](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | **PWD** part consists of 4 screens. All processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Select the number of buses you need and click `Notify`. <br/> 2. **Notifying Page:** Drivers are notified here. <br/> 3. **Waiting Page:** Here you are waiting for the driver, after entering the bus, press `"I'm in bus"`. <br/> 4. **City Selection Page:** Here you can choose a city. <br/><br/> **[Note]** <br/> In the process of notifying and waiting for drivers, you can opt out by clicking `Cancel`.  |
+| ![Main Screen](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainPage.png)  | ![Notifying Drivers](https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif)  | **PWD** part consists of 4 screens. All processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Select the number of buses you need and click `Notify`. <br/> 2. **Notifying Page:** Drivers are notified here. <br/> 3. **Waiting Page:** Here you are waiting for the driver, after entering the bus, press `"I'm on bus"`. <br/> 4. **City Selection Page:** Here you can choose a city. <br/><br/> **[Note]** <br/> In the process of notifying and waiting for drivers, you can opt out by clicking `Cancel`.  |
 
 ### 2. Driver Part
 | Main Screen  | Bus Changing  | Overview  |
@@ -120,7 +120,7 @@ Step-by-step instructions for importing the `WaitForMe` project.
       pubspec.lock
       pubspec.yaml
 ㅤ  
-You can also import our project using the `git clone` command. To do this, you need to go to the command prompt and specify the path to the folder where you will import the project.  
+You can also clone our project using the `git clone` command. To do this, you need to go to the command prompt and specify the path to the folder where you will import the project.  
 
 Next you will need to enter the following:
       
