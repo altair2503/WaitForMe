@@ -41,8 +41,8 @@ Our application actively contributes to the implementation of two key United Nat
 
 🎥 PROJECT DEMO VIDEO
 ------------------
-![Demo Video](https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png)
-> Video Link: soon...
+<a href="https://www.youtube.com/watch?v=0OUgQ8-GLik&ab_channel=aknurkappar"><img src="https://github.com/altair2503/WaitForMe/blob/main/readme/VideoCover.png"></a>
+> Video Link: [WaitForMe - GDSC Solution Challenge 2024](https://www.youtube.com/watch?v=0OUgQ8-GLik&ab_channel=aknurkappar)
 
 ---
 
