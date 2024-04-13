@@ -247,12 +247,13 @@ class _PwdHomePageTopBarUI extends StatelessWidget {
           ),
           Expanded(
             child: TextButton(
-              onPressed: () async {
-                final dialog = await showLogoutDialog(context);
-                if(dialog) {
-                  await AuthService.firebase().logout();
-                  Navigator.of(context).pushNamedAndRemoveUntil(welcome, (route) => false);
-                }
+              onPressed: () {
+                // final dialog = await showLogoutDialog(context);
+                // if(dialog) {
+                //   await AuthService.firebase().logout();
+                //   Navigator.of(context).pushNamedAndRemoveUntil(welcome, (route) => false);
+                // }
+                Navigator.pushNamed(context, '/pwd-profile-page');
               },
               style: TextButton.styleFrom(
                 iconColor: Colors.black.withOpacity(.8),

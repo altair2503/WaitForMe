@@ -9,3 +9,4 @@ const notifyingPage = '/notifying';
 const driverNavigation = 'driver-notification';
 const pwdHomePage = 'pwd-home-page';
 const driverHomePage = 'driver-home-page';
+const pwdProfilePage = '/pwd-profile-page';

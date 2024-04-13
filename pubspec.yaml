@@ -53,6 +53,7 @@ dependencies:
   http: ^1.2.0
   firebase_analytics: ^10.8.5
   pair: ^0.1.2
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:
@@ -95,6 +96,8 @@ flutter:
     - assets/images/backwelcome.png
     - assets/images/logowelcome.png
     - assets/images/email.png
+    - assets/images/vi_role.png
+    - assets/images/di_role.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -136,6 +139,6 @@ flutter:
           weight: 600
         - asset: assets/fonts/Poppins-Bold.ttf
           weight: 700
-  #
+  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
