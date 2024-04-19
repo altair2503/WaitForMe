@@ -1,16 +1,11 @@
 // ignore_for_file: library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:wait_for_me/constants/routes.dart';
+import 'package:wait_for_me/dialogs/logout_dialog.dart';
 
 import 'package:wait_for_me/auth/auth_service.dart';
-import 'package:wait_for_me/services/bus_service.dart';
-import 'package:wait_for_me/presentation/pages/pwd/notifying_page.dart';
-import 'package:wait_for_me/services/notification_service.dart';
-import 'package:wait_for_me/services/location_service.dart';
-import 'package:wait_for_me/services/tts_service.dart';
-
 import 'package:carousel_slider/carousel_slider.dart';
-
 import 'package:ionicons/ionicons.dart';
 
 
@@ -32,8 +27,14 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
       'name': 'Visualy Impaired',
       'img': 'assets/images/vi_role.png'
     },
+    {
+      'name': 'PWD',
+      'img': 'assets/images/vi_role.png'
+    },
   ];
   
+  final CarouselController _controller = CarouselController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,23 +69,78 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
                   )
                 ),
               ),
-              Container(
-                child: CarouselSlider(
-                  options: CarouselOptions(
-                    aspectRatio: 2.0,
-                    enlargeCenterPage: true,
-                    enableInfiniteScroll: false,
-                  ),
-                  items: pwdRoles.asMap().map((index, roles) =>
-                    MapEntry(
-                      index,
-                      Container(
-                        child: Text(roles['name'].toString()),
-                      ),
+              Column(
+                children: [
+                  const SizedBox(height: 20),
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      aspectRatio: 2.0,
+                      enableInfiniteScroll: false,
+                      initialPage: 1,
+                      height: 330
                     ),
-                  ).values.toList()
-                )
-              ),
+                    carouselController: _controller,
+                    items: pwdRoles.asMap().map((index, roles) =>
+                      MapEntry(
+                        index,
+                        Container(
+                          width: 280,
+                          padding: const EdgeInsets.all(25),
+                          margin: const EdgeInsets.only(bottom: 20),
+                          decoration: BoxDecoration(
+                            color: const Color.fromRGBO(250, 250, 250, 1),
+                            border: Border.all(color: Colors.black.withOpacity(.06)),
+                            borderRadius: const BorderRadius.all(Radius.circular(25)),
+                          ),
+                          child: Stack(
+                            children: [
+                              Image(
+                                image: AssetImage(roles['img'].toString()),
+                                width: index > 0 ? 118 : 125
+                              ),
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: Text(
+                                  roles['name'].toString(),
+                                  style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                                )
+                              )
+                            ],
+                          )
+                        ),
+                      ),
+                    ).values.toList()
+                  ),
+                  Row(
+                    children: [
+                      ...Iterable<int>.generate(pwdRoles.length).map(
+                        (int pageIndex) => Flexible(
+                          child: SizedBox(
+                            width: 200,
+                            height: 45,
+                            child: TextButton(
+                              onPressed: () {
+                                _controller.animateToPage(pageIndex);
+                              },
+                              style: TextButton.styleFrom(
+                                backgroundColor: const Color.fromRGBO(41, 86, 154, 1),
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                              ),
+                              child: Text(
+                                pwdRoles[pageIndex]['name'].toString(),
+                                style: const TextStyle(
+                                  fontSize: 15,
+                                  color: Colors.white
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    ],
+                  )
+                ]
+              )
             ]
           )
         )
@@ -103,7 +159,13 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
           width: double.infinity,
           height: 62,
           child: TextButton(
-            onPressed: () {},
+            onPressed: () async {
+              final dialog = await showLogoutDialog(context);
+              if(dialog) {
+                await AuthService.firebase().logout();
+                Navigator.of(context).pushNamedAndRemoveUntil(welcome, (route) => false);
+              }
+            },
             style: TextButton.styleFrom(
               backgroundColor: const Color.fromRGBO(41, 86, 154, 1),
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
