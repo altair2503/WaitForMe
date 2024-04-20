@@ -123,14 +123,16 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     
     var userData = snapshot.docs[0].data()['users_info'];
 
+    print(userData);
+
     setState(() {
       usersInfo = userData;
     });
 
     final Uint8List busMarkerIcon = await getBytesFromAsset('assets/icons/busmark.png', 180);
     final Uint8List pwdMarkerIcon = await getBytesFromAsset('assets/icons/pwdmark.png', 150);
-    final Uint8List pwdViMarkerIcon = await getBytesFromAsset('assets/icons/vi_role.png', 150);
-    final Uint8List pwdDiMarkerIcon = await getBytesFromAsset('assets/icons/di_role.png', 150);
+    final Uint8List pwdViMarkerIcon = await getBytesFromAsset('assets/images/vi_role.png', 120);
+    final Uint8List pwdDiMarkerIcon = await getBytesFromAsset('assets/images/di_role.png', 120);
 
     newMarkerList.add(
       Marker(
@@ -143,6 +145,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         ),
       ),
     );
+
     for(var user in userData) {
       newMarkerList.add(
         Marker(
