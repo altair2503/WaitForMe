@@ -173,7 +173,8 @@ class BusService {
               "latitude": currentLocation.latitude,
               "longitude": currentLocation.longitude,
               "device_token": await getDeviceToken(),
-              "notified": false
+              "notified": false,
+              "role": user?.role
             }
           ])
         });
@@ -213,6 +214,7 @@ class BusService {
                   "longitude": dataList[i]['users_info'][j]['longitude'],
                   "notified": dataList[i]['users_info'][j]['notified'],
                   "device_token": dataList[i]['users_info'][j]['device_token'],
+                  "role": dataList[i]['users_info'][j]['role']
                 }
               ])
             });
@@ -252,7 +254,8 @@ class BusService {
                     "latitude": dataList[i]['users_info'][j]['latitude'],
                     "longitude": dataList[i]['users_info'][j]['longitude'],
                     "device_token": dataList[i]['users_info'][j] ['device_token'],
-                    "notified": dataList[i]['users_info'][j]['notified']
+                    "notified": dataList[i]['users_info'][j]['notified'],
+                    "role": dataList[i]['users_info'][j]['role']
                   }
                 ])
               });
@@ -266,6 +269,7 @@ class BusService {
                     "device_token": dataList[i]['users_info'][j]
                         ['device_token'],
                     "notified": true,
+                    "role": dataList[i]['users_info'][j]['role']
                   }
                 ])
               });

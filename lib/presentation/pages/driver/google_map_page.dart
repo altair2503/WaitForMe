@@ -129,6 +129,8 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
 
     final Uint8List busMarkerIcon = await getBytesFromAsset('assets/icons/busmark.png', 180);
     final Uint8List pwdMarkerIcon = await getBytesFromAsset('assets/icons/pwdmark.png', 150);
+    final Uint8List pwdViMarkerIcon = await getBytesFromAsset('assets/icons/vi_role.png', 150);
+    final Uint8List pwdDiMarkerIcon = await getBytesFromAsset('assets/icons/di_role.png', 150);
 
     newMarkerList.add(
       Marker(
@@ -146,7 +148,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
         Marker(
           markerId: MarkerId(user['id']),
           position: LatLng(user['latitude'], user['longitude']),
-          icon: BitmapDescriptor.fromBytes(pwdMarkerIcon),
+          icon: user['role'] == "PWD" ? BitmapDescriptor.fromBytes(pwdMarkerIcon) : (user['role'] == "PWD_VI" ? BitmapDescriptor.fromBytes(pwdViMarkerIcon) : BitmapDescriptor.fromBytes(pwdDiMarkerIcon)),
           infoWindow: InfoWindow(
             title: 'user',
             snippet: 'Lat: ${user["latitude"]}, Lng: ${user["longitude"]}',

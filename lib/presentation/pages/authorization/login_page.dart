@@ -146,15 +146,15 @@ class _LoginViewState extends State<LoginView> {
                       await AuthService.firebase().login(email: email, password: password);
                       await AuthService.firebase().getCurrentUser().then((user) => _user = user);
                       
-                      if(_user?.role == 'PWD') {
+                      if(_user!.role.contains('PWD')) {
                         print("it's PWD");
                         Navigator.of(context).pushNamedAndRemoveUntil(pwdHomePage, (route) => false);
                       } 
-                      else if (_user?.role == 'driver') {
+                      else if (_user.role == 'driver') {
                         Navigator.of(context).pushNamedAndRemoveUntil(driverHomePage, (route) => false);
                       }
                       else {
-                        print('Noo, ${_user?.name}, ${_user?.role}, ${_user?.emailVerified}');
+                        print('Noo, ${_user.name}, ${_user.role}, ${_user.emailVerified}');
                       }
 
                       log("logged!");

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:wait_for_me/auth/auth_provider.dart';
 import 'package:wait_for_me/models/auth_user.dart';
 import 'package:wait_for_me/auth/firebase_auth_provider.dart';
@@ -57,6 +60,19 @@ class AuthService implements GeneralAuthProvider {
   @override
   Future<AuthUser?> getCurrentUser() {
     return provider.getCurrentUser();
+  }
+
+  Future<bool> changeRole(String role) async {
+    try {
+      final user = await AuthService.firebase().getCurrentUser();
+      await FirebaseFirestore.instance.collection("users").doc(user?.id).update({
+        "role": role,
+      });
+      return true;
+    } catch (e) {
+      log(e.toString());
+      return false;
+    }
   }
 
 }

@@ -7,6 +7,7 @@ import 'package:wait_for_me/dialogs/logout_dialog.dart';
 import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:wait_for_me/models/auth_user.dart';
 
 
 class PwdProfilePage extends StatefulWidget {
@@ -34,6 +35,7 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
   ];
   
   final CarouselController _controller = CarouselController();
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -112,19 +114,31 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
                     ).values.toList()
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       ...Iterable<int>.generate(pwdRoles.length).map(
                         (int pageIndex) => Flexible(
-                          child: SizedBox(
-                            width: 200,
-                            height: 45,
+                          child: Container(
+                            width: pageIndex == 1 ? 1000 : null,
+                            height: pageIndex == 1 ? null : 45,
+                            margin: const EdgeInsets.symmetric(horizontal: 3),
                             child: TextButton(
-                              onPressed: () {
+                              onPressed: () async {
+                                if(await AuthService.firebase()
+                                    .changeRole(pageIndex == 0 ? "PWD_DI" : (pageIndex == 1 ? "PWD_VI" : "PWD"))){
+                                  print("changed");
+                                } else{
+                                  print("not changed"); 
+                                };
+
+
                                 _controller.animateToPage(pageIndex);
+                                currentIndex = pageIndex;
                               },
                               style: TextButton.styleFrom(
-                                backgroundColor: const Color.fromRGBO(41, 86, 154, 1),
+                                backgroundColor: currentIndex == pageIndex ? Color.fromRGBO(41, 86, 154, 1) : Colors.grey,
                                 shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                side: BorderSide(color: Colors.black.withOpacity(.06))
                               ),
                               child: Text(
                                 pwdRoles[pageIndex]['name'].toString(),
