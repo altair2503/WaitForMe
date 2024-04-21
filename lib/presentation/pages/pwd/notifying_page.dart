@@ -121,22 +121,23 @@ class _NotifyingPageState extends State<NotifyingPage> {
                         if(found)
                           Expanded(
                             child: TextButton(
-                            onPressed: () => {
-                              BusService.instance?.removeUser(),
-                              NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers, "Passenger is on the bus"),
-                              Navigator.pop(context)
-                            },
-                            style: TextButton.styleFrom(
-                              backgroundColor: const Color.fromRGBO(22, 35, 56, 1),
-                              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
-                              padding: const EdgeInsets.symmetric(vertical: 16)
-                            ),
-                            child: const Text(
-                              "I'm on bus",
-                              style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white)
-                            ),
-                          )
-                        ),
+                              onPressed: () => {
+                                // BusService.instance?.removeUser(),
+                                // NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers, "Passenger is on the bus"),
+                                // Navigator.pop(context)
+                                Navigator.pushNamed(context, '/pwd-on-way-page')
+                              },
+                              style: TextButton.styleFrom(
+                                backgroundColor: const Color.fromRGBO(22, 35, 56, 1),
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+                                padding: const EdgeInsets.symmetric(vertical: 16)
+                              ),
+                              child: const Text(
+                                "I'm on bus",
+                                style: TextStyle(fontSize: 19, fontWeight: FontWeight.w600, color: Colors.white)
+                              ),
+                            )
+                          ),
                         if(found) const SizedBox(width: 10),
                         Expanded(
                           child: TextButton(

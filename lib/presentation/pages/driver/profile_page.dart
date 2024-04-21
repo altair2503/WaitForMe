@@ -287,7 +287,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                         backgroundColor: lightGrayColor,
                         foregroundColor: mainColor,
                       ),
-                      child: const Text("Logout"),
+                      child: const Text("Logout")
                     )
                   ),
                 ]

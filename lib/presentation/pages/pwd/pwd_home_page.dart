@@ -264,12 +264,12 @@ class _PwdHomePageTopBarUI extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Icon(
-                    Ionicons.log_out_outline,
+                    Ionicons.person_circle_outline,
                     size: 28, 
                     color: Color.fromRGBO(41, 86, 154, 1)
                   ),
                   SizedBox(width: 5),
-                  Text("Exit", style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black))
+                  Text("Profile", style: TextStyle(fontSize: 17, fontWeight: FontWeight.w400, color: Colors.black))
                 ]
               )
             )
