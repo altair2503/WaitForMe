@@ -188,7 +188,7 @@ class _PwdHomePageState extends State<PwdHomePage> {
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
             ),
             child: const Text(
-              "Choose a station",
+              "Select a station",
               style: TextStyle(
                 fontSize: 19,
                 fontWeight: FontWeight.w600,
