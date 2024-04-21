@@ -7,6 +7,7 @@ import 'package:wait_for_me/presentation/pages/authorization/registration_driver
 import 'package:wait_for_me/presentation/pages/authorization/registration_user_page.dart';
 import 'package:wait_for_me/presentation/pages/authorization/email_verify_view.dart';
 import 'package:wait_for_me/presentation/pages/authorization/login_page.dart';
+import 'package:wait_for_me/presentation/pages/pwd/bus_stations_page.dart';
 
 import 'package:wait_for_me/presentation/pages/pwd/pwd_home_page.dart';
 import 'package:wait_for_me/presentation/pages/driver/driver_navigation_page.dart';
@@ -40,9 +41,10 @@ class MyApp extends StatelessWidget {
         welcome: (context) => const WelcomePage(),
         pwdHomePage: (context) => const PwdHomePage(),
         driverHomePage: (context) => const DriverNavigationPage(),
-        pwdProfilePage:(context) => const PwdProfilePage(),
-        pwdOnWayPage:(context) => const PwdOnWayPage()
-      },
+        pwdProfilePage: (context) => const PwdProfilePage(),
+        pwdOnWayPage: (context) => const PwdOnWayPage(),
+        busStationsPage: (context) => const BusStationsPage()
+      }
     );
   }
 

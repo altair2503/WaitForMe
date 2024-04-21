@@ -11,3 +11,4 @@ const pwdHomePage = 'pwd-home-page';
 const driverHomePage = 'driver-home-page';
 const pwdProfilePage = '/pwd-profile-page';
 const pwdOnWayPage = '/pwd-on-way-page';
+const busStationsPage = '/bus-stations-page';

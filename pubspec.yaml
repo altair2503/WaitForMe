@@ -99,6 +99,7 @@ flutter:
     - assets/images/vi_role.png
     - assets/images/di_role.png
     - assets/images/loading.gif
+    - assets/images/WaitForMeIcon.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

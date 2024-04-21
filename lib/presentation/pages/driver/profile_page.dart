@@ -33,11 +33,15 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
   @override
   void initState() {
     super.initState();
+
     _fetchData();
+
     _busNumber = TextEditingController();
+
     List l1 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     List l2 = [1, 2, 3, 4, 5, 6, 7];
     List l3 = [1, 2, 3, 4];
+
     l1.removeWhere((item) => !l2.contains(item));
     l1.removeWhere((item) => !l3.contains(item));
   }
@@ -91,8 +95,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                     children: [
                       Container(
                         margin: const EdgeInsets.only(bottom: 30),
-                        child: _user != null 
-                        ? Text(
+                        child: _user != null ? Text(
                           '${_user?.name} ${_user?.surname}',
                           style: const TextStyle(
                             fontSize: 18,
