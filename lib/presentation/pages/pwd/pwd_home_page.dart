@@ -5,7 +5,6 @@ import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/presentation/pages/pwd/bus_stations_page.dart';
 
 import 'package:wait_for_me/services/bus_service.dart';
-import 'package:wait_for_me/presentation/pages/pwd/notifying_page.dart';
 import 'package:wait_for_me/services/notification_service.dart';
 import 'package:wait_for_me/services/location_service.dart';
 import 'package:wait_for_me/services/tts_service.dart';
