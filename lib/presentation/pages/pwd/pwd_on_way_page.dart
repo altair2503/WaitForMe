@@ -26,52 +26,26 @@ class _PwdOnWayPageState extends State<PwdOnWayPage> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: 50,
-              margin: const EdgeInsets.only(bottom: 20),
-              padding: const EdgeInsets.only(top: 5),
+              margin: const EdgeInsets.only(bottom: 40),
+              padding: const EdgeInsets.only(left: 18, right: 18, top: 5),
               decoration: const BoxDecoration(
                 color: Colors.white, 
                 boxShadow: [
                   BoxShadow(color: Color.fromRGBO(0, 0, 0, .18), offset: Offset(0, 0.4))
                 ]
               ),
-              child: Row(
+              child: const Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Ionicons.bus_outline, size: 20, color: Color.fromRGBO(0, 0, 0, .8)),
-                  const SizedBox(width: 5),
-                  const Text("Selected bus number:", style: TextStyle(fontSize: 16.5)),
-                  const SizedBox(width: 8),
-                  Container(
-                    width: 45,
-                    height: 30,
-                    alignment: Alignment.center,
-                    margin: const EdgeInsets.only(right: 5),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color.fromRGBO(0, 0, 0, .05)),
-                      borderRadius: const BorderRadius.all(Radius.circular(8)),
-                      color: const Color.fromRGBO(215, 223, 229, 1)
-                    ),
-                    child: Text(
-                      selectedBusNumber.toString(),
-                      style: const TextStyle(
-                        fontSize: 16, 
-                        fontWeight: FontWeight.w500, 
-                        color: Color.fromRGBO(30, 54, 89, 1)
-                      )
-                    )
-                  )
+                  Icon(Ionicons.bus_outline, size: 22),
+                  SizedBox(width: 6),
+                  Text(
+                    "Bus Route",
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
+                  ),
                 ]
               )
             ),
-            const Text(
-              "Bus Route",
-              style: TextStyle(
-                fontSize: 19,
-                fontWeight: FontWeight.w500,
-                color: Colors.black
-              ),
-            ),
-            const SizedBox(height: 25),
             Stack(
               children: [
                 Positioned.fill(
@@ -128,7 +102,7 @@ class _PwdOnWayPageState extends State<PwdOnWayPage> {
                                   child: Text(
                                     busStations[i],
                                     style: TextStyle(
-                                      fontSize: 16.3,
+                                      fontSize: 17,
                                       fontWeight: selectedStation == i ? FontWeight.w500 : FontWeight.w400,
                                       color: selectedStation == i ? const Color.fromRGBO(41, 86, 154, 1) : Colors.black
                                     ),
