@@ -8,6 +8,8 @@ class Bus {
 
   List<dynamic> driversId;
   List<dynamic> usersInfo;
+  List<dynamic> stopsId;
+
 
   Bus({
     this.id = "",
@@ -15,6 +17,7 @@ class Bus {
     this.numberInt = 0.0,
     this.driversId = const [],
     this.usersInfo = const [],
+    this.stopsId = const [],
   });
 
   Map<String, dynamic> toJson() => {
@@ -23,6 +26,7 @@ class Bus {
     'number_int': numberInt.toDouble(),
     'drivers_id': driversId,
     'users_info': usersInfo,
+    'stops_id': stopsId,
   };
 
   static Bus fromJson(Map<String, dynamic> json) => Bus(
@@ -31,6 +35,7 @@ class Bus {
     numberInt: double.parse(json['number_int'].toString()),
     driversId: json['drivers_id'],
     usersInfo: json['users_info'],
+    stopsId: json['stops_id'],
   );
 
   @override

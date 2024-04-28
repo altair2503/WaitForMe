@@ -33,4 +33,12 @@ class TtsService {
     flutterTts.speak("A person with disabilities is waiting for you $remainingDistance meters away");
   }
 
+  void busStopSpeach(String stopName) {
+    flutterTts.speak("The bus has arrived at the ${stopName} bus stop");
+  }
+
+  void lastStopSpeach(String stopName) {
+    flutterTts.speak("You have arrived your $stopName bus stop. Press the get off button");
+  }
+
 }

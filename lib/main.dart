@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget {
         pwdHomePage: (context) => const PwdHomePage(),
         driverHomePage: (context) => const DriverNavigationPage(),
         pwdProfilePage: (context) => const PwdProfilePage(),
-        pwdOnWayPage: (context) => const PwdOnWayPage(),
+        // pwdOnWayPage: (context) => const PwdOnWayPage(),
       }
     );
   }
