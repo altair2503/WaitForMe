@@ -11,7 +11,6 @@ import 'package:wait_for_me/presentation/pages/authorization/login_page.dart';
 import 'package:wait_for_me/presentation/pages/pwd/pwd_home_page.dart';
 import 'package:wait_for_me/presentation/pages/driver/driver_navigation_page.dart';
 import 'package:wait_for_me/presentation/pages/pwd/cities_page.dart';
-import 'package:wait_for_me/presentation/pages/pwd/pwd_on_way_page.dart';
 import 'package:wait_for_me/presentation/pages/pwd/pwd_profile_page.dart';
 
 

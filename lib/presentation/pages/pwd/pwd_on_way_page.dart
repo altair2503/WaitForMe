@@ -113,6 +113,7 @@ class _PwdOnWayPageState extends State<PwdOnWayPage> {
               )
             ),
             Expanded(
+              flex: busStations.length > 7 ? 1 : 0,
               child: Stack(
                 children: [
                   Positioned.fill(
