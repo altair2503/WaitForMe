@@ -130,7 +130,7 @@ class _GoogleMapPageState extends State<GoogleMapPage> {
     });
 
     final Uint8List busMarkerIcon = await getBytesFromAsset('assets/icons/busmark.png', 180);
-    final Uint8List pwdMarkerIcon = await getBytesFromAsset('assets/icons/pwdmark.png', 150);
+    final Uint8List pwdMarkerIcon = await getBytesFromAsset('assets/images/pwd_role.png', 150);
     final Uint8List pwdViMarkerIcon = await getBytesFromAsset('assets/images/vi_role.png', 120);
     final Uint8List pwdDiMarkerIcon = await getBytesFromAsset('assets/images/di_role.png', 120);
 

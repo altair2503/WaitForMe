@@ -53,7 +53,7 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Container(
               height: 45,
-              margin: const EdgeInsets.only(bottom: 8),
+              margin: const EdgeInsets.only(bottom: 25),
               decoration: const BoxDecoration(
                 color: Colors.white
               ),

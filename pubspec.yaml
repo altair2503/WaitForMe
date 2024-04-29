@@ -100,6 +100,9 @@ flutter:
     - assets/images/di_role.png
     - assets/images/loading.gif
     - assets/images/WaitForMeIcon.png
+    - assets/images/pwd_role.png
+    - assets/images/driver_back.png
+    - assets/images/driver_back2.png
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

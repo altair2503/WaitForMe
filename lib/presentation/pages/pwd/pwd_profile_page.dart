@@ -22,7 +22,7 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
   List<Map<String, String>> pwdRoles = [
     {'name': 'Disabled', 'role': 'PWD_DI', 'img': 'assets/images/di_role.png'},
     {'name': 'Visualy Impaired', 'role': 'PWD_VI', 'img': 'assets/images/vi_role.png'},
-    {'name': 'PWD', 'role': 'PWD', 'img': 'assets/images/vi_role.png'},
+    {'name': 'PWD', 'role': 'PWD', 'img': 'assets/images/pwd_role.png'},
   ];
 
   final CarouselController _controller = CarouselController();
@@ -175,7 +175,7 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
                             children: [
                               Image(
                                 image: AssetImage(roles['img'].toString()),
-                                width: index > 0 ? 115 : 125
+                                width: index > 0 ? (index == pwdRoles.length - 1 ? 135 : 115) : 125
                               ),
                               Align(
                                 alignment: Alignment.bottomRight,
@@ -233,7 +233,7 @@ class _PwdProfilePageState extends State<PwdProfilePage> {
                   color: Colors.white
                 ),
                 SizedBox(width: 6),
-                Text("Log out", style: TextStyle(fontSize: 17, fontWeight: FontWeight.w500, color: Colors.white))
+                Text("Log out", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500, color: Colors.white))
               ]
             )
           )

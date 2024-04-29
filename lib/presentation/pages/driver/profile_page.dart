@@ -1,6 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'package:flutter/material.dart';
+import 'package:ionicons/ionicons.dart';
 
 import 'package:wait_for_me/auth/auth_service.dart';
 import 'package:wait_for_me/services/bus_service.dart';
@@ -75,8 +76,8 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
               decoration: const BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(30.0),
-                  topRight: Radius.circular(30.0)
+                  topLeft: Radius.circular(50.0),
+                  topRight: Radius.circular(50.0)
                 )
               ),
               child: Column(
@@ -89,7 +90,7 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                         child: _user != null ? Text(
                           '${_user?.name} ${_user?.surname}',
                           style: const TextStyle(
-                            fontSize: 18,
+                            fontSize: 19,
                             fontWeight: FontWeight.w600,
                             color: Colors.black
                           ),
@@ -178,52 +179,62 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                               )
                             ]
                           ),
-                          Container(
-                            width: double.infinity,
-                            margin: const EdgeInsets.only(top: 35.0),
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                final dialog = await changeShiftDialog(context);
-                                if(dialog) {
-                                  _busNumber.clear();
-                                  _fetchData();
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                textStyle: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white
-                                ),
-                                backgroundColor: mainColor,
-                                foregroundColor: Colors.white
+                          const SizedBox(height: 30),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: TextButton(
+                                  onPressed: () async {
+                                    final dialog = await changeShiftDialog(context);
+                                    if(dialog) {
+                                      _busNumber.clear();
+                                      _fetchData();
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: const Color.fromRGBO(41, 86, 154, 1),
+                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+                                    padding: const EdgeInsets.symmetric(vertical: 16)
+                                  ),
+                                  child: const Text(
+                                    "Change bus",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white
+                                    )
+                                  ),
+                                )
                               ),
-                              child: const Text("Change bus number"),
-                            )
-                          ),
-                          Container(
-                            width: double.infinity,
-                            margin: const EdgeInsets.only(top: 10.0),
-                            child: ElevatedButton(
-                              onPressed: () async {
-                                final dialog = await endShiftDialog(context);
-                                if(dialog) {
-                                  await BusService.instance?.removeDriverFromBuses();
-                                  _busNumber.clear();
-                                  setShiftActive(false);
-                                  _fetchData();
-                                }
-                              },
-                              style: ElevatedButton.styleFrom(
-                                padding: const EdgeInsets.symmetric(vertical: 16),
-                                textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: Colors.white),
-                                backgroundColor: const Color.fromARGB(255, 226, 81, 71),
-                                foregroundColor: Colors.white
-                              ),
-                              child: const Text("End shift"),
-                            )
-                          ),
+                              const SizedBox(width: 10),
+                              Expanded(
+                                child: TextButton(
+                                  onPressed: () async {
+                                    final dialog = await endShiftDialog(context);
+                                    if(dialog) {
+                                      await BusService.instance?.removeDriverFromBuses();
+                                      _busNumber.clear();
+                                      setShiftActive(false);
+                                      _fetchData();
+                                    }
+                                  },
+                                  style: TextButton.styleFrom(
+                                    backgroundColor: const Color.fromARGB(255, 226, 81, 71),
+                                    shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+                                    padding: const EdgeInsets.symmetric(vertical: 16)
+                                  ),
+                                  child: const Text(
+                                    "End shift",
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w600,
+                                      color: Colors.white
+                                    )
+                                  )
+                                )
+                              )
+                            ]
+                          )
                         ]
                       )
                       : Column(
@@ -236,17 +247,17 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                             decoration: const InputDecoration(
                               contentPadding: EdgeInsets.all(10.0),
                               hintText: "Enter bus number",
-                              hintStyle: TextStyle(color: grayColor),
+                              hintStyle: TextStyle(color: grayColor)
                             ),
                           ),
                           Container(
                             width: double.infinity,
-                            margin: const EdgeInsets.only(top: 20.0),
+                            height: 62,
+                            margin: const EdgeInsets.only(top: 20),
                             child: ElevatedButton(
                               onPressed: () async {
                                 final busNumber = _busNumber.text;
                                 final dialog = await startShiftDialog(context, busNumber);
-
                                 if(dialog) {
                                   await BusService.instance?.assignBusNumber(number: busNumber);
                                   setShiftActive(true);
@@ -255,14 +266,22 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                               },
                               style: ElevatedButton.styleFrom(
                                 padding: const EdgeInsets.symmetric(vertical: 16),
-                                textStyle: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w500,
-                                  color: Colors.white
+                                shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
+                                backgroundColor: greenColor,
+                                foregroundColor: Colors.white
                               ),
-                              backgroundColor: greenColor,
-                              foregroundColor: Colors.white),
-                              child: const Text("Start shift"),
+                              child: const Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Icon(
+                                    Ionicons.bus,
+                                    size: 20, 
+                                    color: Colors.white
+                                  ),
+                                  SizedBox(width: 7),
+                                  Text("Start shift", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500, color: Colors.white))
+                                ]
+                              )
                             )
                           )
                         ]
@@ -271,8 +290,9 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                   ),
                   Container(
                     width: double.infinity,
-                    margin: const EdgeInsets.only(top: 20, bottom: 20),
-                    child: ElevatedButton(
+                    height: 62,
+                    margin: const EdgeInsets.only(bottom: 20),
+                    child: TextButton(
                       onPressed: () async {
                         final dialog = await showLogoutDialog(context);
                         if(dialog) {
@@ -280,17 +300,26 @@ class _DriverProfilePageState extends State<DriverProfilePage> {
                           Navigator.of(context).pushNamedAndRemoveUntil(welcome, (route) => false);
                         }
                       },
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        textStyle: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500, color: mainColor),
-                        backgroundColor: lightGrayColor,
-                        foregroundColor: mainColor,
+                      style: TextButton.styleFrom(
+                        backgroundColor: const Color.fromARGB(255, 230, 230, 230),
+                        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(14))),
                       ),
-                      child: const Text("Logout")
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Ionicons.log_out_outline,
+                            size: 26, 
+                            color: Colors.black
+                          ),
+                          SizedBox(width: 6),
+                          Text("Log out", style: TextStyle(fontSize: 19, fontWeight: FontWeight.w500, color: Colors.black))
+                        ]
+                      )
                     )
-                  ),
+                  )
                 ]
-              ),
+              )
             )
           )
         ),
