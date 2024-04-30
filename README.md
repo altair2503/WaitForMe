@@ -51,7 +51,7 @@ Our application actively contributes to the implementation of two key United Nat
 🧰 USED TECHNOLOGIES
 -----------------
 #### To create our project, we used technologies such as
-* Flutter — Firebase — Google Cloud — Dart — Google Maps
+* Flutter — Firebase — Google Cloud — Dart — Google Analytics — Google Cloud Speech API — Google Maps
   
 ![Technologies](https://github.com/altair2503/WaitForMe/blob/main/readme/Technologies.png)
 
