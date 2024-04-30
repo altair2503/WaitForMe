@@ -92,7 +92,7 @@ Our application actively contributes to the implementation of two key United Nat
 ### Authorization
 | Welcome Screen  | Login Screen  | Registration Screens  |
 | :-----------: | :-----------: | ------------- |
-| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/WelcomePage.PNG" width="300">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/LoginPage.PNG" width="300">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/Registration.gif" width="300">  |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/WelcomePage.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/LoginPage.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/Registration.gif">  |
 
 ---
 
