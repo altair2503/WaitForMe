@@ -74,6 +74,11 @@ Our application actively contributes to the implementation of two key United Nat
 | :-----------: | :-----------: | ------------- |
 | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PwdMainScreen.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PwdUI.gif">  | **PWD** part consists of 4 screens. All processes are accompanied by a `Voice Assistant`. <br/><br/> 1. **Main Screen:** Select the number of buses you need and click `Select a station`. <br/> 2. **Bus Stations Page:** Selects the stop he\she needs. <br/> 3. **Notifying Page:** Drivers are notified here. <br/> 4. **Waiting Page:** Here you are waiting for the driver, after entering the bus, press `"I'm on bus"`. <br/> 5. **On Way Page:** Voice-over of each bus stop to the one you need. Then click `I need to get off`. <br/> 6. **Profile Page:** Here you can change your role. <br/> 7. **City Selection Page:** Here you can choose a city. <br/><br/> **[Note]** <br/> In the process of notifying and waiting for drivers, you can opt out by clicking `Cancel`.  |
 
+### 1.1 PWD Roles
+| Profile Screen  | Role Changing  | Overview  |
+| :-----------: | :-----------: | ------------- |
+| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PwdProfilePage.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/RoleChanging.gif">  | Now, PWD has 3 roles, for a more precise definition. Roles list: <br/><br/> 1. Visually Impaired <br/> 2. Disabled Person <br/> 3. PWD  |
+
 ### 2. Driver Part
 | Main Screen  | Bus Changing  | Overview  |
 | :-----------: | :-----------: | ------------- |
@@ -84,12 +89,7 @@ Our application actively contributes to the implementation of two key United Nat
 | :-----------: | :-----------: | ------------- |
 | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifPwd.gif" width="200">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PushNotifDriver.gif" width="200">  | Our processes are equipped with `Push Notifications`, users receive them: <br/><br/> **[PWD]** <br/> 1. When the driver pulls up to the passenger. <br/><br/> **[Driver]** <br/> 1. When the PWD notifies drivers. <br/> 2. When the passenger entered the transport **or** canceled the trip.  |
 
-### PWD Roles
-| Profile Screen  | Role Changing  | Overview  |
-| :-----------: | :-----------: | ------------- |
-| <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/PwdProfilePage.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/RoleChanging.gif">  | Now, PWD has 3 roles, for a more precise definition. Roles list: <br/><br/> 1. Visually Impaired <br/> 2. Disabled Person <br/> 3. PWD  |
-
-### Authorization
+### 3. Authorization
 | Welcome Screen  | Login Screen  | Registration Screens  |
 | :-----------: | :-----------: | ------------- |
 | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/WelcomePage.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/LoginPage.PNG" width="365">  | <img src="https://github.com/altair2503/WaitForMe/blob/main/readme/Registration.gif">  |
