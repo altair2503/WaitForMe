@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:wait_for_me/analytics_engine.dart';
 
 import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/models/stops_model.dart';
@@ -136,6 +138,8 @@ class _NotifyingPageState extends State<NotifyingPage> {
                         if(found) Expanded(
                           child: TextButton(
                             onPressed: () => {
+                              Geolocator.getCurrentPosition()
+                                .then((currentPosition) => AnalyticsEngine.onBusActivity(currentPosition, selectedBusNumbers, busStations[busStations.length-1], DateTime.now())),
                               BusService.instance?.removeUser(),
                               NotificationService.instance?.sendNotificationToDrivers(selectedBusNumbers, "Passenger is on the bus"),
                               Navigator.push(

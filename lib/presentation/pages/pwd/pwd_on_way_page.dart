@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:location/location.dart';
+import 'package:wait_for_me/analytics_engine.dart';
 import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/models/stops_model.dart';
 import 'package:wait_for_me/services/bus_service.dart';
@@ -210,6 +211,7 @@ class _PwdOnWayPageState extends State<PwdOnWayPage> {
                 selectedBusNumbers,
                 "Passenger need to get off the bus at ${busStations[selectedStation].name}"
               ),
+              AnalyticsEngine.getOffStation(busStations[selectedStation], DateTime.now()),
               Navigator.pushNamed(context, 'pwd-home-page')
             },
             style: TextButton.styleFrom(

@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, no_logic_in_create_state
 
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:ionicons/ionicons.dart';
+import 'package:wait_for_me/analytics_engine.dart';
 
 import 'package:wait_for_me/models/bus_model.dart';
 import 'package:wait_for_me/models/stops_model.dart';
@@ -238,6 +240,8 @@ class _BusStationsPageState extends State<BusStationsPage> {
           height: 62,
           child: TextButton(
             onPressed: selectedStation != null ? () => {
+              Geolocator.getCurrentPosition()
+                .then((currentPosition) => AnalyticsEngine.selectedBusesAndStation(currentPosition, selectedBusNumbers, busStations[selectedStation], DateTime.now())),
               Navigator.push(
                 context,
                 MaterialPageRoute(
