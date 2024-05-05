@@ -9,7 +9,7 @@ class AnalyticsEngine {
 
   static void selectedBusesAndStation(Position currentPosition, List<Bus> buses, Stop stop, DateTime time) async{
     for(var bus in buses){
-      _instance.logEvent(name: "selected_bus_and_stop",  parameters: {"current_position": "${currentPosition.latitude.toString()}, ${currentPosition.longitude.toString()}", "bus": bus.number,  "time": time.toString()});
+      _instance.logEvent(name: "selected_bus_and_stop",  parameters: {"current_position": "${currentPosition.latitude.toString()}, ${currentPosition.longitude.toString()}", "bus": bus.number, "stop": stop.toString(), "time": time.toString()});
     }
   }
 
